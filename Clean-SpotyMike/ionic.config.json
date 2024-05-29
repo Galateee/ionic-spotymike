@@ -1,7 +1,0 @@
-{
-  "name": "Clean-SpotyMike",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}
