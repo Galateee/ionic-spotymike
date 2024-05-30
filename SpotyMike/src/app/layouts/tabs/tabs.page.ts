@@ -7,7 +7,7 @@ import {
   IonLabel,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { person, heart, home, musicalNote } from 'ionicons/icons';
+import { homeOutline, heartOutline, musicalNotesOutline, personOutline } from 'ionicons/icons';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
 
 @Component({
@@ -21,6 +21,6 @@ export class TabsPage {
   private albumService = inject(FirestoreService);
   constructor() {
     this.albumService.getAlbums2();
-    addIcons({ person, heart, home, musicalNote });
+    addIcons({ homeOutline, heartOutline, musicalNotesOutline, personOutline });
   }
 }
