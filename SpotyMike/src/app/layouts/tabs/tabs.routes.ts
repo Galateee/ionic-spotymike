@@ -14,17 +14,17 @@ export const routes: Routes = [
       {
         path: 'like',
         loadComponent: () =>
-          import('../../pages/tab2/tab2.page').then((m) => m.Tab2Page),
+          import('../../pages/like/like.page').then((m) => m.LikePage),
       },
       {
         path: 'playlist',
         loadComponent: () =>
-          import('../../pages/tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../../pages/playlist/playlist.page').then((m) => m.PlaylistPage),
       },
       {
         path: 'profile',
         loadComponent: () =>
-          import('../../pages/tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../../pages/profile/profile.page').then((m) => m.ProfilePage),
       },
       {
         path: '',
