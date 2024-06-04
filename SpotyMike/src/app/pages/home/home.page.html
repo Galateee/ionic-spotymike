@@ -1,17 +1,70 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-app>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
+      <ion-buttons slot="start">
+        <img
+          src="assets/img/placeholder.PNG"
+          alt="profil-img"
+          class="profile-img"
+          (click)="profilePage()"
+        />
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="search-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Home page"></app-explore-container>
-</ion-content>
+  <ion-content class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>New Album</ion-card-title>
+        <ion-card-subtitle>R & B Hits</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Discover 87 songs!</p>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="music-genres">
+      <h2>Music Genres</h2>
+      <ion-segment>
+        <ion-segment-button value="all">All</ion-segment-button>
+        <ion-segment-button value="rnb">R&B</ion-segment-button>
+        <ion-segment-button value="pop">Pop</ion-segment-button>
+        <ion-segment-button value="rock">Rock</ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="top-songs">
+      <h2>Top Songs</h2>
+      <div class="card-container">
+        <ion-card *ngFor="let song of topSongs" class="card">
+          <ion-card-content>
+            <img src="assets/img/placeholder.PNG" alt="song" />
+            <h3>{{ song.title }}</h3>
+            <p>{{ song.artist }}</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <div class="last-played">
+      <h2>Last Played</h2>
+      <ion-list>
+        <ion-item *ngFor="let song of lastPlayed">
+          <ion-thumbnail slot="start">
+            <img src="assets/img/placeholder.PNG" />
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{ song.title }}</h3>
+            <p>{{ song.artist }}</p>
+          </ion-label>
+          <ion-note slot="end">{{ song.duration }}</ion-note>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-app>
