@@ -1,17 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Like
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Like</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- endIcon : search, dotes -->
+  <!-- startIcon : profile, back -->
+  <app-header startIcon="back" headerTitle="" endIcon="dotes"></app-header>
 
-  <app-explore-container name="Like page"></app-explore-container>
-</ion-content>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Like</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <app-explore-container name="Like page"></app-explore-container>
+  </ion-content>
+</ion-app>

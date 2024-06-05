@@ -3,7 +3,7 @@ app-home{
   width: 100%;
 }
 
-.top-songs, .last-played {
+.top-songs {
   margin: 20px 0;
 }
 
@@ -16,19 +16,12 @@ ion-segment {
 }
 
 .card-container {
-  display: flex;  /* Set the container to display elements flexibly */
-  flex-wrap: wrap;  /* Allow cards to wrap to multiple lines if needed */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
-  margin: 2%;  /* Add some margin between cards for spacing */
-  width: calc(33% - 20px);  /* Set card width to 50% of container minus margins */
-}
-
-.profile-img{
-  height: 25%;
-  width: 25%;
-  border-radius: 50% !important;
-  overflow: hidden;
+  margin: 2%;
+  width: calc(33% - 20px);
 }
 

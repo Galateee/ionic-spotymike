@@ -31,4 +31,9 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'home',
   },
+  {
+    path: 'search',
+    loadComponent: () => import('./pages/search/search.page').then( m => m.SearchPage)
+  },
+
 ];

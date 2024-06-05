@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ProfilePage } from '../profile/profile.page';
 import { Router } from '@angular/router';
 import { SongListComponent } from 'src/app/components/song-list/song-list.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @Component({
   selector: 'app-home-home',
@@ -26,19 +27,12 @@ import { SongListComponent } from 'src/app/components/song-list/song-list.compon
     IonThumbnail,
     CommonModule,
     SongListComponent,
+    HeaderComponent,
   ],
 })
 export class HomePage {
 
-  private router = inject(Router);
-
-  constructor() {
-    addIcons({ searchOutline});
-  }
-
-  profilePage() {
-    this.router.navigateByUrl('/home/profile');
-  }
+  constructor() { }
 
   topSongs = [
     { title: 'Starry Skies', artist: 'Amelia Cantata' },
