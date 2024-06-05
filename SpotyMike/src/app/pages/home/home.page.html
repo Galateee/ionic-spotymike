@@ -1,27 +1,37 @@
 <ion-app class="ion-padding">
 
-  <!-- endIcon : search, dotes -->
   <!-- startIcon : profile, back -->
+  <!-- endIcon : search, dotes -->
   <app-header startIcon="profile" headerTitle="" endIcon="search"></app-header>
 
   <ion-content [fullscreen]="true">
-    <ion-card>
+    <ion-card class="newAlbum">
       <ion-card-header>
-        <ion-card-title>New Album</ion-card-title>
-        <ion-card-subtitle>R & B Hits</ion-card-subtitle>
+        <ion-card-title>R & B Hits</ion-card-title>
+        <ion-card-subtitle>New Album</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <p>Discover 87 songs!</p>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <img src="assets/img/placeholder.PNG"/>
       </ion-card-content>
     </ion-card>
 
-    <div class="music-genres">
+    <div  class="music-genres">
       <h2>Music Genres</h2>
       <ion-segment>
-        <ion-segment-button value="all">All</ion-segment-button>
-        <ion-segment-button value="rnb">R&B</ion-segment-button>
-        <ion-segment-button value="pop">Pop</ion-segment-button>
-        <ion-segment-button value="rock">Rock</ion-segment-button>
+        <ion-segment-button value="all">
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="rnb">
+          <ion-label>R&B</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="pop">
+          <ion-label>Pop</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="rock">
+          <ion-label>Rock</ion-label>
+        </ion-segment-button>
       </ion-segment>
     </div>
 

@@ -1,24 +1,63 @@
-
 app-home{
   width: 100%;
 }
 
+//new album
+.newAlbum{
+  //margin: 10px 0;
+
+  ion-icon{
+    font-size: 25px;
+    padding-top: 3%;
+    margin-bottom: -2%;
+  }
+
+  img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 50%;
+  }
+}
+
+//music genres
+.music-genres {
+  //margin: 20px 0;
+  //padding: 10px;
+  ion-segment{
+  background-color: transparent;
+}
+
+ion-segment-button {
+  --indicator-color: #08a391;
+  margin: auto;
+}
+
+/* Material Design styles */
+ion-segment-button.md {
+  --color-checked: #08a391;
+  --indicator-height: 4px;
+}
+
+/* iOS styles */
+ion-segment-button.ios {
+  --color-checked: #fff;
+  --border-radius: 20px;
+  border: solid 1px;
+  }
+}
+
+//top songs
 .top-songs {
   margin: 20px 0;
 }
-
-ion-card {
-  margin: 10px 0;
-}
-
-ion-segment {
-  margin: 20px 0;
-}
-
 .card-container {
   display: flex;
   flex-wrap: wrap;
 }
+
+
 
 .card {
   margin: 2%;
