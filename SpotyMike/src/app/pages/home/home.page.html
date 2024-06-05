@@ -51,20 +51,7 @@
       </div>
     </div>
 
-    <div class="last-played">
-      <h2>Last Played</h2>
-      <ion-list>
-        <ion-item *ngFor="let song of lastPlayed">
-          <ion-thumbnail slot="start">
-            <img src="assets/img/placeholder.PNG" />
-          </ion-thumbnail>
-          <ion-label>
-            <h3>{{ song.title }}</h3>
-            <p>{{ song.artist }}</p>
-          </ion-label>
-          <ion-note slot="end">{{ song.duration }}</ion-note>
-        </ion-item>
-      </ion-list>
-    </div>
+    <app-song-list headerTitle="Last Played" [hasHeader]="true"></app-song-list>
+
   </ion-content>
 </ion-app>

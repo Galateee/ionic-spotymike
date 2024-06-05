@@ -10,6 +10,7 @@ import { searchOutline } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { ProfilePage } from '../profile/profile.page';
 import { Router } from '@angular/router';
+import { SongListComponent } from 'src/app/components/song-list/song-list.component';
 
 @Component({
   selector: 'app-home-home',
@@ -24,6 +25,7 @@ import { Router } from '@angular/router';
     ExploreContainerComponent,
     IonThumbnail,
     CommonModule,
+    SongListComponent,
   ],
 })
 export class HomePage {
@@ -34,22 +36,15 @@ export class HomePage {
     addIcons({ searchOutline});
   }
 
+  profilePage() {
+    this.router.navigateByUrl('/home/profile');
+  }
+
   topSongs = [
     { title: 'Starry Skies', artist: 'Amelia Cantata' },
     { title: 'Sunset Serenity', artist: 'Olivia Lyric' },
     { title: 'Eternal Sunset', artist: 'Mason Chorus' },
   ];
-
-  lastPlayed = [
-    { title: 'Dusty Roads', artist: 'Jakob Press', duration: '5:33' },
-    { title: 'Golden Sunset', artist: 'Davis Calzoni', duration: '2:33' },
-    { title: 'Lost Soul', artist: 'Jaxon Bergson', duration: '1:33' },
-    { title: 'Summer Love', artist: 'Charlie Aminoff', duration: '7:33' },
-  ];
-
-  profilePage() {
-    this.router.navigateByUrl('/home/profile');
-  }
 }
 
 
