@@ -29,4 +29,9 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
+  {
+    path: 'tab4',
+    loadComponent: () => import('./pages/tab4/tab4.page').then( m => m.Tab4Page)
+  },
+
 ];

@@ -1,13 +1,119 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" dir="rtl">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">register</ion-title>
+      <ion-title size="large">Sign Up</ion-title>
     </ion-toolbar>
   </ion-header>
+  
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-list class="bg-transparent">
+      <!-- First Name and Last Name on the same line -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-input type="text" formControlName="firstName" name="firstName" label="First Name" labelPlacement="floating" placeholder="John"></ion-input>
+            </ion-item>
+            <!-- First Name Validation -->
+            @if(form.get('firstName')?.invalid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)){
+            <div>
+              @if(form.get('firstName')?.errors?.['required']){
+              <p class="error"><ion-icon name="alert-outline"></ion-icon>First name is required</p>
+              }
+            </div>
+            }
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-input type="text" formControlName="lastName" name="lastName" label="Last Name" labelPlacement="floating" placeholder="Doe"></ion-input>
+            </ion-item>
+            <!-- Last Name Validation -->
+            @if(form.get('lastName')?.invalid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)){
+            <div>
+              @if(form.get('lastName')?.errors?.['required']){
+              <p class="error"><ion-icon name="alert-outline"></ion-icon>Last name is required</p>
+              }
+            </div>
+            }
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Email Input -->
+      <ion-item>
+        <ion-input type="email" formControlName="email" name="email" label="Email" labelPlacement="floating" placeholder="mike@mike.mike"></ion-input>
+      </ion-item>
+      <!-- Email Validation -->
+      @if(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)){
+      <div>
+        @if(form.get('email')?.errors?.['required']){
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ 'auth.email_require'|translate }}</p>
+        }
+        @else if(form.get('email')?.errors?.['pattern']){
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ 'auth.email_format'|translate }}</p>
+        }
+      </div>
+      }
+
+      <!-- Password Input -->
+      <ion-item>
+        <ion-input type="password" formControlName="password" name="password" label="Password" labelPlacement="floating" placeholder="••••••••••••••"></ion-input>
+      </ion-item>
+      <!-- Password Validation -->
+      @if(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)){
+      <div>
+        @if(form.get('password')?.errors?.['required']){
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Password is required</p>
+        }
+        @else if(form.get('password')?.errors?.['pattern']){
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Password format is invalid</p>
+        }
+        @else if(form.get('password')?.errors?.['minlength']){
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Password size is invalid</p>
+        }
+      </div>
+      }
+
+      <!-- Date of Birth Input -->
+      <ion-item>
+        <ion-input type="date" formControlName="dateOfBirth" name="dateOfBirth"></ion-input>
+      </ion-item>
+
+      <!-- Phone Number Input -->
+      <ion-item>
+        <ion-input type="tel" formControlName="phoneNumber" name="phoneNumber" label="Phone Number" labelPlacement="floating" placeholder="123-456-7890"></ion-input>
+      </ion-item>
+      <!-- Phone Number Validation -->
+      @if(form.get('phoneNumber')?.invalid && (form.get('phoneNumber')?.dirty || form.get('phoneNumber')?.touched)){
+      <div>
+        @if(form.get('phoneNumber')?.errors?.['required']){
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Phone number is required</p>
+        }
+      </div>
+      }
+
+      <!-- Gender Selection -->
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select formControlName="gender" name="gender">
+
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+    <br>
+    <!-- Error Message -->
+    @if(error){
+    <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ error }}</p>
+    }
+    <br>
+    <!-- Submit Button -->
+    <ion-button type="submit" [disabled]="!form.valid && !submitForm">Se Connecter</ion-button>
+  </form>
 </ion-content>
