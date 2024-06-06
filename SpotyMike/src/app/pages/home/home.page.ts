@@ -10,11 +10,11 @@ import { arrowForwardOutline } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { ProfilePage } from '../profile/profile.page';
 import { Router } from '@angular/router';
-import { SongListComponent } from 'src/app/components/song-list/song-list.component';
-import { HeaderComponent } from 'src/app/components/header/header.component';
-import { CardDisplayComponent } from 'src/app/components/card-display/card-display.component';
-import { SegmentComponent } from 'src/app/components/segment/segment.component';
-import { ListPlaylistComponent } from 'src/app/components/list-playlist/list-playlist.component';
+import { SongListComponent } from 'src/app/shared/components/song-list/song-list.component';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { CardDisplayComponent } from 'src/app/shared/components/card-display/card-display.component';
+import { SegmentComponent } from 'src/app/shared/components/segment/segment.component';
+import { ListPlaylistComponent } from 'src/app/shared/components/list-playlist/list-playlist.component';
 
 @Component({
   selector: 'app-home-home',

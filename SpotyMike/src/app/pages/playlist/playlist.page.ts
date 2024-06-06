@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonApp } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { HeaderComponent } from 'src/app/components/header/header.component';
-import { ListPlaylistComponent } from 'src/app/components/list-playlist/list-playlist.component';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { ListPlaylistComponent } from 'src/app/shared/components/list-playlist/list-playlist.component';
 
 @Component({
   selector: 'app-playlist',
