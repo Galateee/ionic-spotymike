@@ -4,7 +4,8 @@ ion-list-header{
 
 ion-item {
   --background: transparent;
-  padding-bottom: 24px;
+  padding: 12px 0px;
+
 }
 
 img {
@@ -14,4 +15,12 @@ img {
 
 ion-note {
   padding-right: 20px;
+}
+
+ion-list ion-item:first-of-type {
+  padding-top: 0;
+}
+
+ion-list ion-item:last-of-type {
+  padding-bottom: 0;
 }
