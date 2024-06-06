@@ -14,6 +14,7 @@ import { SongListComponent } from 'src/app/components/song-list/song-list.compon
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { CardDisplayComponent } from 'src/app/components/card-display/card-display.component';
 import { SegmentComponent } from 'src/app/components/segment/segment.component';
+import { ListPlaylistComponent } from 'src/app/components/list-playlist/list-playlist.component';
 
 @Component({
   selector: 'app-home-home',
@@ -32,6 +33,8 @@ import { SegmentComponent } from 'src/app/components/segment/segment.component';
     HeaderComponent,
     CardDisplayComponent,
     SegmentComponent,
+    ListPlaylistComponent,
+
   ],
 })
 export class HomePage {

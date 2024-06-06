@@ -2,16 +2,13 @@
 
   <!-- endIcon : search, dotes -->
   <!-- startIcon : profile, back -->
-  <app-header startIcon="back" headerTitle="" endIcon="dotes"></app-header>
+  <app-header startIcon="back" headerTitle="Playlist" endIcon="dotes"></app-header>
 
   <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">Playlist</ion-title>
-      </ion-toolbar>
-    </ion-header>
 
-    <app-explore-container name="Playlist page"></app-explore-container>
+    <div class="pad">
+      <app-list-playlist headerTitle="" [hasHeader]="false" [hasGetAll]="false"></app-list-playlist>
+    </div>
   </ion-content>
 
 </ion-app>
