@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { SongListComponent } from 'src/app/components/song-list/song-list.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { CardDisplayComponent } from 'src/app/components/card-display/card-display.component';
+import { SegmentComponent } from 'src/app/components/segment/segment.component';
 
 @Component({
   selector: 'app-home-home',
@@ -30,6 +31,7 @@ import { CardDisplayComponent } from 'src/app/components/card-display/card-displ
     SongListComponent,
     HeaderComponent,
     CardDisplayComponent,
+    SegmentComponent,
   ],
 })
 export class HomePage {

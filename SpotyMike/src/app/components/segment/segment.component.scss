@@ -1,0 +1,32 @@
+ion-list-header{
+  padding-bottom: 15px;
+}
+
+//music genres
+.music-genres {
+  //margin: 10px 0;
+  //padding: 10px;
+
+  ion-segment {
+    background-color: transparent;
+  }
+
+  ion-segment-button {
+    --indicator-color: #08a391;
+    margin: auto;
+    padding: 3px 0px;
+  }
+
+  /* Material Design styles */
+  ion-segment-button.md {
+    --color-checked: #08a391;
+    --indicator-height: 4px;
+  }
+
+  /* iOS styles */
+  ion-segment-button.ios {
+    --color-checked: #fff;
+    --border-radius: 20px;
+    border: solid 1px;
+  }
+}

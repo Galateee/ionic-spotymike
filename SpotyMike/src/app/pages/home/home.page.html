@@ -17,27 +17,7 @@
       </ion-card-content>
     </ion-card>
 
-    <div class="music-genres">
-      <ion-list-header>
-        <ion-label>Music Genres</ion-label>
-        <ion-button class="seeAllButton">See All</ion-button>
-      </ion-list-header>
-      <ion-segment>
-        <ion-segment-button value="all">
-          <ion-label>All</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="rnb">
-          <ion-label>R&B</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="pop">
-          <ion-label>Pop</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="rock">
-          <ion-label>Rock</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-
+    <app-segment headerTitle="Music Genres" [hasHeader]="true" [hasGetAll]="true"></app-segment>
 
     <app-card-display value="topSongs" headerTitle="Top Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
 

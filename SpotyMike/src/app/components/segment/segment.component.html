@@ -1,0 +1,20 @@
+<div class="music-genres">
+  <ion-list-header *ngIf="hasHeader">
+    <ion-label>{{ headerTitle }}</ion-label>
+    <ion-button class="seeAllButton" *ngIf="hasGetAll">See All</ion-button>
+  </ion-list-header>
+  <ion-segment>
+    <ion-segment-button value="all">
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="rnb">
+      <ion-label>R&B</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="pop">
+      <ion-label>Pop</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="rock">
+      <ion-label>Rock</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</div>
