@@ -13,14 +13,13 @@
   
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ion-list class="bg-transparent">
-      <!-- First Name and Last Name on the same line -->
       <ion-grid>
         <ion-row>
           <ion-col>
+            <ion-label class="input-label">First Name</ion-label>
             <ion-item>
-              <ion-input type="text" formControlName="firstName" name="firstName" label="First Name" labelPlacement="floating" placeholder="John"></ion-input>
+              <ion-input type="text" formControlName="firstName" name="firstName" labelPlacement="floating" placeholder="John"></ion-input>
             </ion-item>
-            <!-- First Name Validation -->
             @if(form.get('firstName')?.invalid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)){
             <div>
               @if(form.get('firstName')?.errors?.['required']){
@@ -30,10 +29,10 @@
             }
           </ion-col>
           <ion-col>
+            <ion-label class="input-label">Last Name</ion-label>
             <ion-item>
-              <ion-input type="text" formControlName="lastName" name="lastName" label="Last Name" labelPlacement="floating" placeholder="Doe"></ion-input>
+              <ion-input type="text" formControlName="lastName" name="lastName"  labelPlacement="floating" placeholder="Doe"></ion-input>
             </ion-item>
-            <!-- Last Name Validation -->
             @if(form.get('lastName')?.invalid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)){
             <div>
               @if(form.get('lastName')?.errors?.['required']){
@@ -44,12 +43,10 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
-      <!-- Email Input -->
+      <ion-label class="input-label">Email</ion-label>
       <ion-item>
-        <ion-input type="email" formControlName="email" name="email" label="Email" labelPlacement="floating" placeholder="mike@mike.mike"></ion-input>
+        <ion-input type="email" formControlName="email" name="email" labelPlacement="floating" placeholder="mike@mike.mike"></ion-input>
       </ion-item>
-      <!-- Email Validation -->
       @if(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)){
       <div>
         @if(form.get('email')?.errors?.['required']){
@@ -60,12 +57,10 @@
         }
       </div>
       }
-
-      <!-- Password Input -->
+      <ion-label class="input-label">Password</ion-label>
       <ion-item>
-        <ion-input type="password" formControlName="password" name="password" label="Password" labelPlacement="floating" placeholder="••••••••••••••"></ion-input>
+        <ion-input type="password" formControlName="password" name="password" labelPlacement="floating" placeholder="••••••••••••••"></ion-input>
       </ion-item>
-      <!-- Password Validation -->
       @if(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)){
       <div>
         @if(form.get('password')?.errors?.['required']){
@@ -79,17 +74,14 @@
         }
       </div>
       }
-
-      <!-- Date of Birth Input -->
+      <ion-label class="input-label">DateBirth</ion-label>
       <ion-item>
         <ion-input type="date" formControlName="dateOfBirth" name="dateOfBirth"></ion-input>
       </ion-item>
-
-      <!-- Phone Number Input -->
+      <ion-label class="input-label">Phone Number</ion-label>
       <ion-item>
-        <ion-input type="tel" formControlName="phoneNumber" name="phoneNumber" label="Phone Number" labelPlacement="floating" placeholder="123-456-7890"></ion-input>
+        <ion-input type="tel" formControlName="phoneNumber" name="phoneNumber" labelPlacement="floating" placeholder="123-456-7890"></ion-input>
       </ion-item>
-      <!-- Phone Number Validation -->
       @if(form.get('phoneNumber')?.invalid && (form.get('phoneNumber')?.dirty || form.get('phoneNumber')?.touched)){
       <div>
         @if(form.get('phoneNumber')?.errors?.['required']){
@@ -97,10 +89,8 @@
         }
       </div>
       }
-
-      <!-- Gender Selection -->
+      <ion-label class="input-label">Sexe</ion-label>
       <ion-item>
-        <ion-label>Gender</ion-label>
         <ion-select formControlName="gender" name="gender">
 
         </ion-select>
@@ -108,12 +98,11 @@
 
     </ion-list>
     <br>
-    <!-- Error Message -->
     @if(error){
     <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ error }}</p>
     }
     <br>
-    <!-- Submit Button -->
+
     <ion-button type="submit" [disabled]="!form.valid && !submitForm">Se Connecter</ion-button>
   </form>
 </ion-content>

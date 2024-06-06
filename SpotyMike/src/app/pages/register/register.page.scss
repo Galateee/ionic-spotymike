@@ -1,57 +1,138 @@
-app-login{
+app-login {
     width: 100%;
   }
+  
   ion-content::part(background) {
-    background: rgb(122,111,249);
-    background: linear-gradient(180deg, rgba(122,111,249,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    background: rgb(122, 111, 249);
+    background: linear-gradient(180deg, rgba(122, 111, 249, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
   }
+  
   ion-grid {
     height: 100%;
-  
-    ion-row {
-      height: 7%;
-    }
   }
-  .logo{
+  
+  ion-grid ion-row {
+    height: auto;
+  }
+  
+  .logo {
     padding: 25% 0;
   }
-  form{
+  
+  form {
     padding: 5% 5%;
     text-align: center;
-    ion-list{
-      padding: 5%;
-      .input-group {
-        display: flex;
-        justify-content: space-between;
-      }
-      .input-label{
-        color: #A3A3A3;
-        text-align: left;
-        font-size:  0.875rem;
-      }
-      ion-item{
-        --background: transparent;
-        border : 0.063rem solid #E5E5E5;
-        ion-input{
-          --placeholder-color: #A3A3A3;
-        }
-      }
-  
-  
-    }
-    ion-button{
-      --color: white;
-      --background: #15AB90;
-      padding: 5%;
-    }
-    a{
-      font-size: 0.875rem;
-      display: block;
-      color: #15AB90;
-      text-decoration:none
-    }
-    .bg-transparent {
-      background: transparent;
-    }
-  
+    background: transparent;
   }
+  
+  .list-ios {
+    background: transparent !important;
+  }
+  
+  form ion-list {
+    padding: 0;
+    background: transparent;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  .input-label {
+    color: #000000;
+    text-align: left;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  form ion-list ion-item {
+    --background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    background: #ffffff !important;
+  }
+  
+  form ion-list ion-item ion-input {
+    --background: #ffffff;
+    --color: #000000;
+    --placeholder-color: #000000;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+  }
+  
+  form ion-button {
+    --color: white;
+    --background: #15AB90;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  form a {
+    font-size: 0.875rem;
+    display: block;
+    color: #15AB90;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+  
+  form ion-button:hover,
+  form ion-button:focus {
+    --background:#15AB90;
+  }
+  
+  ion-item {
+    --border-width: 0;
+    --inner-border-width: 0;
+  }
+  
+  ion-title {
+    font-size: 1.25rem;
+    background: transparent !important;
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  ion-toolbar {
+    --background: transparent !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none !important;
+    box-shadow: none;
+  }
+  
+  .form-label {
+    padding: 0 5%;
+  }
+  
+  .input-label {
+    color: #000000;
+    text-align: left;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  ion-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  ion-item ion-label {
+    min-width: 100px;
+    text-align: left;
+  }
+  
