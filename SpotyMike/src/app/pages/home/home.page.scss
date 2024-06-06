@@ -1,66 +1,84 @@
-app-home{
+app-home {
   width: 100%;
 }
 
 //new album
-.newAlbum{
+.new-album {
   //margin: 10px 0;
-
-  ion-icon{
+  //padding: 10px;
+  margin-bottom: auto;
+  ion-icon {
     font-size: 25px;
     padding-top: 3%;
     margin-bottom: -2%;
   }
 
-  img{
+  img {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateY(-50%);
-    width: 50%;
+    transform: translateY(-54%);
+    width: 44%;
   }
 }
 
 //music genres
 .music-genres {
-  //margin: 20px 0;
+  //margin: 10px 0;
   //padding: 10px;
-  ion-segment{
-  background-color: transparent;
-}
 
-ion-segment-button {
-  --indicator-color: #08a391;
-  margin: auto;
-}
-
-/* Material Design styles */
-ion-segment-button.md {
-  --color-checked: #08a391;
-  --indicator-height: 4px;
-}
-
-/* iOS styles */
-ion-segment-button.ios {
-  --color-checked: #fff;
-  --border-radius: 20px;
-  border: solid 1px;
+  ion-segment {
+    background-color: transparent;
   }
+
+  ion-segment-button {
+    --indicator-color: #08a391;
+    margin: auto;
+    padding: 3px 0px;
+  }
+
+  /* Material Design styles */
+  ion-segment-button.md {
+    --color-checked: #08a391;
+    --indicator-height: 4px;
+  }
+
+  /* iOS styles */
+  ion-segment-button.ios {
+    --color-checked: #fff;
+    --border-radius: 20px;
+    border: solid 1px;
+  }
+}
+
+ion-list-header{
+  padding-bottom: 15px;
 }
 
 //top songs
 .top-songs {
-  margin: 20px 0;
+
+  img{
+    border-radius: 16px;
+  }
+  .card-container{
+
+  }
+  ion-col{
+    padding: 0;
+    margin-right:16px;
+    margin-left:16px;
+  }
+  ion-card{
+    margin: 0;
+    background-color: transparent;
+  }
+  ion-card-content{
+    padding: 0;
+    padding-top: 10px;
+    text-align: center;
+    h3{
+      color:white;
+    }
+  }
 }
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-
-
-.card {
-  margin: 2%;
-  width: calc(33% - 20px);
-}
-

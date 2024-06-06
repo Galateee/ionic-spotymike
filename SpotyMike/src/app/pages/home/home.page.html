@@ -5,7 +5,7 @@
   <app-header startIcon="profile" headerTitle="" endIcon="search"></app-header>
 
   <ion-content [fullscreen]="true">
-    <ion-card class="newAlbum">
+    <ion-card class="new-album">
       <ion-card-header>
         <ion-card-title>R & B Hits</ion-card-title>
         <ion-card-subtitle>New Album</ion-card-subtitle>
@@ -13,12 +13,15 @@
       <ion-card-content>
         <p>Discover 87 songs!</p>
         <ion-icon name="arrow-forward-outline"></ion-icon>
-        <img src="assets/img/placeholder.PNG"/>
+        <img src="assets/img/placeholder.PNG" />
       </ion-card-content>
     </ion-card>
 
-    <div  class="music-genres">
-      <h2>Music Genres</h2>
+    <div class="music-genres">
+      <ion-list-header>
+        <ion-label>Music Genres</ion-label>
+        <ion-button class="seeAllButton">See All</ion-button>
+      </ion-list-header>
       <ion-segment>
         <ion-segment-button value="all">
           <ion-label>All</ion-label>
@@ -36,16 +39,26 @@
     </div>
 
     <div class="top-songs">
-      <h2>Top Songs</h2>
+
+      <ion-list-header>
+        <ion-label>Top Songs</ion-label>
+        <ion-button class="seeAllButton">See All</ion-button>
+      </ion-list-header>
+
       <div class="card-container">
-        <ion-card *ngFor="let song of topSongs" class="card">
-          <ion-card-content>
-            <img src="assets/img/placeholder.PNG" alt="song" />
-            <h3>{{ song.title }}</h3>
-            <p>{{ song.artist }}</p>
-          </ion-card-content>
-        </ion-card>
+        <ion-row>
+          <ion-col *ngFor="let song of topSongs" >
+            <ion-card>
+              <img src="assets/img/placeholder.PNG" alt="song" />
+              <ion-card-content>
+                <h3>{{ song.artist }}</h3>
+                <p>{{ song.title }}</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
       </div>
+
     </div>
 
     <app-song-list headerTitle="Last Played" [hasHeader]="true"></app-song-list>
