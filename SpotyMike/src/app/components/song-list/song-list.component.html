@@ -2,7 +2,7 @@
 
   <ion-list-header *ngIf="hasHeader">
     <ion-label>{{ headerTitle }}</ion-label>
-    <ion-button class="seeAllButton">See All</ion-button>
+    <ion-button class="seeAllButton" *ngIf="hasGetAll">See All</ion-button>
   </ion-list-header>
 
   <ion-item *ngFor="let song of songs">

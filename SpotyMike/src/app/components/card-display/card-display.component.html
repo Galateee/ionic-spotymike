@@ -1,0 +1,20 @@
+<div [ngClass]="{'top-artists-style': value === 'topArtists'}" class="top-songs">
+  <ion-list-header *ngIf="hasHeader">
+    <ion-label>{{ headerTitle }}</ion-label>
+    <ion-button class="seeAllButton" *ngIf="hasGetAll">See All</ion-button>
+  </ion-list-header>
+
+  <div class="card-container">
+    <ion-row>
+      <ion-col *ngFor="let item of data">
+        <ion-card>
+          <img src="assets/img/placeholder.PNG" alt="item" />
+          <ion-card-content>
+            <h3 *ngIf="item.artist">{{ item.artist }}</h3>
+            <p *ngIf="item.title">{{ item.title }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

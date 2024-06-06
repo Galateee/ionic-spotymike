@@ -12,6 +12,7 @@ import { ProfilePage } from '../profile/profile.page';
 import { Router } from '@angular/router';
 import { SongListComponent } from 'src/app/components/song-list/song-list.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
+import { CardDisplayComponent } from 'src/app/components/card-display/card-display.component';
 
 @Component({
   selector: 'app-home-home',
@@ -28,6 +29,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     CommonModule,
     SongListComponent,
     HeaderComponent,
+    CardDisplayComponent,
   ],
 })
 export class HomePage {
@@ -37,12 +39,6 @@ export class HomePage {
   ngOnInit() {
     addIcons({ arrowForwardOutline });
   }
-
-  topSongs = [
-    { title: 'Starry Skies', artist: 'Amelia Cantata' },
-    { title: 'Sunset Serenity', artist: 'Olivia Lyric' },
-    { title: 'Eternal Sunset', artist: 'Mason Chorus' },
-  ];
 }
 
 

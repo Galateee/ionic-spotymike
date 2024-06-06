@@ -23,6 +23,7 @@ export class SongListComponent  implements OnInit {
 
   @Input() hasHeader?: boolean;
   @Input() headerTitle?: string;
+  @Input() hasGetAll?: boolean;
 
   constructor() { }
 

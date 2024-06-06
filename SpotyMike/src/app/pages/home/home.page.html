@@ -38,30 +38,15 @@
       </ion-segment>
     </div>
 
-    <div class="top-songs">
 
-      <ion-list-header>
-        <ion-label>Top Songs</ion-label>
-        <ion-button class="seeAllButton">See All</ion-button>
-      </ion-list-header>
+    <app-card-display value="topSongs" headerTitle="Top Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
 
-      <div class="card-container">
-        <ion-row>
-          <ion-col *ngFor="let song of topSongs" >
-            <ion-card>
-              <img src="assets/img/placeholder.PNG" alt="song" />
-              <ion-card-content>
-                <h3>{{ song.artist }}</h3>
-                <p>{{ song.title }}</p>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </div>
+    <app-song-list headerTitle="Last Played" [hasHeader]="true" [hasGetAll]="false"></app-song-list>
 
-    </div>
+    <app-card-display value="topAlbums" headerTitle="Top Albums" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
 
-    <app-song-list headerTitle="Last Played" [hasHeader]="true"></app-song-list>
+    <app-card-display value="topArtists" headerTitle="Top Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+
 
   </ion-content>
 </ion-app>
