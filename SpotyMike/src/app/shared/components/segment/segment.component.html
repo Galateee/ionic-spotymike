@@ -3,7 +3,8 @@
     <ion-label>{{ headerTitle }}</ion-label>
     <ion-button class="seeAllButton" *ngIf="hasGetAll">See All</ion-button>
   </ion-list-header>
-  <ion-segment>
+
+  <ion-segment value="all" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="all">
       <ion-label>All</ion-label>
     </ion-segment-button>
@@ -17,4 +18,5 @@
       <ion-label>Rock</ion-label>
     </ion-segment-button>
   </ion-segment>
+
 </div>

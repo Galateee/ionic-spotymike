@@ -77,6 +77,13 @@ export class HomePage {
   albumPage() {
     this.router.navigateByUrl('/album');
   }
+
+  selectedSegment: string = 'all';
+
+  onSegmentChanged(val: string) {
+    this.selectedSegment = val;
+    console.log( val);
+  }
 }
 
 
