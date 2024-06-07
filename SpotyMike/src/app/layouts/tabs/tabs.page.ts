@@ -18,9 +18,7 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
   imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
 })
 export class TabsPage {
-  private albumService = inject(FirestoreService);
   constructor() {
-    this.albumService.getAlbums2();
     addIcons({ homeOutline, heartOutline, musicalNotesOutline, personOutline });
   }
 }

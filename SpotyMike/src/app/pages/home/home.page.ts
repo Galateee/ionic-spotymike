@@ -15,6 +15,7 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
 import { CardDisplayComponent } from 'src/app/shared/components/card-display/card-display.component';
 import { SegmentComponent } from 'src/app/shared/components/segment/segment.component';
 import { ListPlaylistComponent } from 'src/app/shared/components/list-playlist/list-playlist.component';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
 
 @Component({
   selector: 'app-home-home',
@@ -39,8 +40,10 @@ import { ListPlaylistComponent } from 'src/app/shared/components/list-playlist/l
 })
 export class HomePage {
 
-  constructor() { }
-
+  private albumService = inject(FirestoreService);
+  constructor() {
+    this.albumService.getAlbums();
+  }
   ngOnInit() {
     addIcons({ arrowForwardOutline });
   }

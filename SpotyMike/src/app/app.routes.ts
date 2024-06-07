@@ -34,6 +34,22 @@ export const routes: Routes = [
   {
     path: 'search',
     loadComponent: () => import('./pages/search/search.page').then( m => m.SearchPage)
+  },  {
+    path: 'list-song',
+    loadComponent: () => import('./pages/list-song/list-song.page').then( m => m.ListSongPage)
   },
+  {
+    path: 'list-artist',
+    loadComponent: () => import('./pages/list-artist/list-artist.page').then( m => m.ListArtistPage)
+  },
+  {
+    path: 'profile-artist',
+    loadComponent: () => import('./pages/profile-artist/profile-artist.page').then( m => m.ProfileArtistPage)
+  },
+  {
+    path: 'player-song',
+    loadComponent: () => import('./pages/player-song/player-song.page').then( m => m.PlayerSongPage)
+  },
+
 
 ];
