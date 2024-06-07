@@ -34,7 +34,8 @@ export const routes: Routes = [
   {
     path: 'search',
     loadComponent: () => import('./pages/search/search.page').then( m => m.SearchPage)
-  },  {
+  },
+  {
     path: 'list-song',
     loadComponent: () => import('./pages/list-song/list-song.page').then( m => m.ListSongPage)
   },
@@ -54,6 +55,5 @@ export const routes: Routes = [
     path: 'album',
     loadComponent: () => import('./pages/album/album.page').then( m => m.AlbumPage)
   },
-
-
 ];
+

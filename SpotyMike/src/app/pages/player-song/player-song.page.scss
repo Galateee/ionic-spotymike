@@ -1,0 +1,191 @@
+.ion-content-player {
+  --background: rgb(83, 113, 105);
+  --background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgb(83, 113, 105) 120%
+  );
+
+  .song-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 23.125rem;
+    width: 23.125rem;
+    padding-inline: 1.25rem;
+    border-radius: 1.8125rem; /* Apply border radius here */
+    overflow: hidden; /* Ensure rounded corners for child elements */
+  }
+
+  .song-image ion-img {
+    width: 100%; /* Ensure the image takes up the entire space */
+    height: 100%;
+  }
+
+  .song-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .song-title {
+    font-size: 1.25rem;
+    color: #171621;
+  }
+
+  .song-subtitle {
+    font-size: 1.125rem;
+    display: block;
+    color: #404040;
+  }
+
+  .range {
+    padding-inline: 1.25rem;
+    --bar-background-active: #15ab90;
+  }
+
+  ion-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 1rem;
+  }
+
+  .song-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 1.25rem;
+    padding-top: 0;
+  }
+
+  .icons-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .icon-sides.active {
+    color: #15ab90; 
+  }
+
+  .share-icon,
+  .heart-icon-fav,
+  .heart-icon {
+    font-size: 2em;
+    margin-left: 0.5rem;
+  }
+
+  .heart-icon {
+    color: #171621;
+    border: 1px solid #d9cfcf;
+    border-radius: 50%; /* Make it circular */
+    padding: 0.4rem; /* Adjust padding to control the size of the circle */
+  }
+
+  .heart-icon-fav {
+    color: #d54444;
+    border: 1px solid #d9cfcf;
+    border-radius: 50%; /* Make it circular */
+    padding: 0.4rem; /* Adjust padding to control the size of the circle */
+  }
+
+  .share-icon {
+    color: #404040;
+    border: 1px solid #d9cfcf;
+    border-radius: 50%; /* Make it circular */
+    padding: 0.4rem; /* Adjust padding to control the size of the circle */
+  }
+
+  ion-icon.icon {
+    font-size: 2em;
+    margin: 0 0.625rem;
+  }
+
+  ion-icon.icon-play {
+    font-size: 4em;
+    margin: 0 0.625rem;
+    color: #15ab90;
+  }
+
+  ion-icon.icon-sides {
+    font-size: 2em;
+    margin: 0 0.625rem;
+    color: #a3a3a3;
+  }
+
+  .lyrics-card {
+    padding: 0rem;
+    height: 21em;
+    background-color: #f4f4f4;
+    border-radius: 1rem;
+  }
+
+  .lyrics-card ion-card-content {
+    padding: 1rem;
+    font-size: 1rem !important;
+    color: #333;
+  }
+
+  .lyrics-card ion-card-content p {
+    font-size: 1.625rem;
+  }
+
+  .lyrics-card ion-card-content .lyrics-title {
+    padding: 0 !important;
+    font-weight: bold !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .lyrics-card ion-card-content .lyrics-icon {
+    font-size: 1.5rem;
+    color: #171621;
+    padding-bottom: 1rem !important;
+  }
+
+  .lyrics-container {
+    max-height: 4.5em; /* Limit the height of the lyrics container */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .lyrics-container.expanded {
+    max-height: none; /* Remove the height limit when expanded */
+  }
+}
+
+ion-col {
+  padding: 0;
+  font-weight: bold;
+}
+
+.transparent-header {
+  --background: transparent;
+  --box-shadow: none;
+  --border-color: transparent;
+  padding: 1rem 1rem;
+
+  ion-toolbar {
+    --ion-color-base: transparent;
+  }
+
+  ion-title {
+    color: white;
+  }
+
+  ion-icon {
+    color: white;
+  }
+
+  
+
+  ion-back-button {
+    color: white;
+  }
+
+  ion-back-button::part(icon) {
+    font-size: 1.5rem;
+  }
+}
