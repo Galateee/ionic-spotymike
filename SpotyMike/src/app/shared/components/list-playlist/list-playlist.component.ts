@@ -1,15 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IonItem, IonList, IonThumbnail, IonLabel, IonNote, IonListHeader, IonButton, IonIcon } from "@ionic/angular/standalone";
+import { Router } from '@angular/router';
+import { Component, OnInit, Input, inject } from '@angular/core';
+import { IonItem, IonList, IonThumbnail, IonLabel, IonNote, IonListHeader, IonButton, IonIcon, IonAlert, AlertController } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { ellipsisVertical, heartOutline, shareSocialOutline } from 'ionicons/icons';
-
+import { AlertService } from 'src/app/core/services/alert.service';
 @Component({
   selector: 'app-list-playlist',
   templateUrl: './list-playlist.component.html',
   styleUrls: ['./list-playlist.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton,
+  imports: [IonAlert, IonIcon, IonButton,
     IonItem,
     IonList,
     IonThumbnail,
@@ -25,10 +26,21 @@ export class ListPlaylistComponent  implements OnInit {
   @Input() headerTitle?: string;
   @Input() hasGetAll?: boolean;
 
+  private alert = inject(AlertService);
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void{
     addIcons({ ellipsisVertical, heartOutline, shareSocialOutline});
+  }
+
+  presentAlert(){
+    this.alert.presentAlert();
+  }
+
+  private router = inject(Router);
+  playerSongPage() {
+    this.router.navigateByUrl('/list-song');
   }
 
   songs = [

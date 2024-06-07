@@ -47,6 +47,36 @@ export class HomePage {
   ngOnInit() {
     addIcons({ arrowForwardOutline });
   }
+
+  private router = inject(Router);
+
+  likePage() {
+    this.router.navigateByUrl('/home/like');
+  }
+  playlistPage() {
+    this.router.navigateByUrl('/home/playlist');
+  }
+  profilePage() {
+    this.router.navigateByUrl('/home/profile');
+  }
+  profileArtist() {
+    this.router.navigateByUrl('/profile-artist');
+  }
+  listSongPage() {
+    this.router.navigateByUrl('/list-song');
+  }
+  listArtistPage() {
+    this.router.navigateByUrl('/list-artist');
+  }
+  playerSongPage() {
+    this.router.navigateByUrl('/player-song');
+  }
+  searchPage() {
+    this.router.navigateByUrl('/search');
+  }
+  albumPage() {
+    this.router.navigateByUrl('/album');
+  }
 }
 
 

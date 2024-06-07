@@ -2,19 +2,19 @@
 
   <ion-list-header *ngIf="hasHeader">
     <ion-label>{{ headerTitle }}</ion-label>
-    <ion-button class="seeAllButton" *ngIf="hasGetAll">See All</ion-button>
+    <ion-button class="seeAllButton" *ngIf="hasGetAll" href="/list-song">See All</ion-button>
   </ion-list-header>
 
   <ion-item *ngFor="let song of songs">
-    <ion-thumbnail slot="start">
+    <ion-thumbnail slot="start" (click)="playerSongPage()">
       <img src="assets/img/placeholder.PNG" />
     </ion-thumbnail>
-    <ion-label>
+    <ion-label (click)="playerSongPage()">
       <h3>{{ song.title }}</h3>
       <p>{{ song.artist }}</p>
     </ion-label>
     <ion-note>{{ song.duration }}</ion-note>
-    <ion-icon slot="end" name="ellipsis-horizontal"></ion-icon>
+    <ion-icon slot="end" name="ellipsis-horizontal" id="present-alert" (click)="presentAlert()"></ion-icon>
   </ion-item>
 
 </ion-list>

@@ -2,27 +2,27 @@
 
   <ion-list-header *ngIf="hasHeader">
     <ion-label>{{ headerTitle }}</ion-label>
-    <ion-button class="seeAllButton" *ngIf="hasGetAll">See All</ion-button>
+    <ion-button class="seeAllButton" *ngIf="hasGetAll" href="/playlist">See All</ion-button>
   </ion-list-header>
 
   <ion-item *ngFor="let song of songs">
-    <img src="assets/img/placeholder.PNG" />
-    <ion-label>
-      <h2>{{ song.title }}</h2>
-      <h3>{{ song.artist }}</h3>
-      <p>{{ song.songs }}</p>
-    </ion-label>
-    <ion-icon slot="end" name="ellipsis-vertical"></ion-icon>
-
+    <img class="test" src="assets/img/placeholder.PNG" (click)="playerSongPage()"/>
+    <div class="test" (click)="playerSongPage()">
+      <ion-label>
+        <h2>{{ song.title }}</h2>
+        <h3>{{ song.artist }}</h3>
+        <p>{{ song.songs }}</p>
+      </ion-label>
+    </div>
+    <ion-icon slot="end" name="ellipsis-vertical" (click)="presentAlert()"></ion-icon>
     <div class="bottom-right-icons">
-    <ion-button shape="circle">
-      <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-    </ion-button>
-    <ion-button shape="circle">
-      <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
-    </ion-button>
-  </div>
-
+      <ion-button shape="circle" (click)="presentAlert()">
+        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button shape="circle" (click)="presentAlert()">
+        <ion-icon slot="icon-only" name="share-social-outline" ></ion-icon>
+      </ion-button>
+    </div>
   </ion-item>
 
 </ion-list>

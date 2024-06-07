@@ -8,8 +8,10 @@ ion-item {
   padding-bottom: 11px;
   align-items: normal;
 
-  ion-label {
-    padding-left: 26px;
+  .test {
+    ion-label {
+      padding-left: 26px;
+    }
   }
 
   .bottom-right-icons {
@@ -28,6 +30,9 @@ ion-item {
 
       width: 30px;
       height: 30px;
+    }
+    ion-button:active {
+      --background:#15AB90;
     }
   }
 }

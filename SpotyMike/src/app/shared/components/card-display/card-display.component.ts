@@ -58,4 +58,14 @@ export class CardDisplayComponent  implements OnInit {
     { avatar: '' },
   ];
 
+  private router = inject(Router);
+  valuePage() {
+    if (this.value === 'topSongs') {
+      this.router.navigate(['/player-song']); // Redirect to /list-song for songs
+    } else if (this.value === 'topAlbums') {
+      this.router.navigate(['/album']); // Redirect to /list-album for albums
+    } else if (this.value === 'topArtists') {
+      this.router.navigate(['/profile-artist']); // Redirect to /list-artist for artists
+    }
+  }
 }

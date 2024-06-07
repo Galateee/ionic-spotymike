@@ -7,7 +7,7 @@
 
     <!-- New Albums -->
   <ion-content [fullscreen]="true">
-    <ion-card class="new-album">
+    <ion-card class="new-album" (click)="albumPage()">
       <ion-card-header>
         <ion-card-title>R & B Hits</ion-card-title>
         <ion-card-subtitle>New Album</ion-card-subtitle>
@@ -29,7 +29,7 @@
     <app-song-list headerTitle="Last Played" [hasHeader]="true" [hasGetAll]="true"></app-song-list>
 
     <!-- Top Albums component -->
-    <app-card-display value="topAlbums" headerTitle="Top Albums" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+    <app-card-display value="topAlbums" headerTitle="Top Albums" [hasHeader]="true" [hasGetAll]="false"></app-card-display>
 
     <!-- Top Artists component -->
     <app-card-display value="topArtists" headerTitle="Top Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
