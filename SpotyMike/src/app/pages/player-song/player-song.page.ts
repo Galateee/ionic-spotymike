@@ -35,9 +35,9 @@ import {
 } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-player',
-  templateUrl: './player.page.html',
-  styleUrls: ['./player.page.scss'],
+  selector: 'app-player-song',
+  templateUrl: './player-song.page.html',
+  styleUrls: ['./player-song.page.scss'],
   standalone: true,
   imports: [
     IonCardContent,
@@ -59,7 +59,7 @@ import {
     FormsModule,
   ],
 })
-export class PlayerPage implements OnInit, OnDestroy {
+export class PlayerSongPage implements OnInit, OnDestroy {
   constructor() {
     addIcons({
       repeat,
@@ -107,7 +107,7 @@ export class PlayerPage implements OnInit, OnDestroy {
       }
     }
   }
-  
+
   startPlaybackInterval() {
     this.intervalId = setInterval(() => {
       this.rangeValue += 1;
@@ -123,11 +123,11 @@ export class PlayerPage implements OnInit, OnDestroy {
       this.updateLyrics();
     }, 1000); // Update every second
   }
-  
+
   pausePlayback() {
-    clearInterval(this.intervalId); 
+    clearInterval(this.intervalId);
   }
-  
+
 
   updateLyrics() {
     const lyricIndex = Math.floor(this.rangeValue / (100 / this.lyrics.length));
@@ -166,7 +166,7 @@ export class PlayerPage implements OnInit, OnDestroy {
     this.currentLyric = this.lyrics[0];
     this.rangeValue = 0;
   }
-  
+
   shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

@@ -28,9 +28,10 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'auth/login',
-  },  {
-    path: 'player',
-    loadComponent: () => import('./layouts/player/player.page').then( m => m.PlayerPage)
+  },
+  {
+    path: 'player-song',
+    loadComponent: () => import('./pages/player-song/player-song.page').then( m => m.PlayerSongPage)
   },
 
 ];

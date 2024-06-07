@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PlayerPage } from './player.page';
+import { PlayerPage } from './player-song.page';
 
 describe('PlayerPage', () => {
   let component: PlayerPage;
