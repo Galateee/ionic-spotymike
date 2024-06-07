@@ -1,158 +1,147 @@
-.content-container {
-    background: linear-gradient(180deg, #15AB90 0%, white 100%);
-  }
-  
-  
-  .divider {
-    width: 376px;
-    height: 0;
-    position: absolute;
-    border: 1px solid white;
-  }
-  
-  .divider-1 {
-    left: 15px;
-    top: 828px;
-  }
-  
-  .divider-2 {
-    left: 16px;
-    top: 828px;
-  }
-  
-  .followers-following-container {
-    position: absolute;
-    left: 147px;
-    top: 191px;
-    width: 171px;
-    height: 38px;
-  }
-  
-  .followers-following-text {
-    font-size: 12px;
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  .followers-following-label {
-    font-size: 10px;
-    font-family: 'Plus Jakarta Sans';
-    font-weight: 400;
-    letter-spacing: 0.80px;
-    text-align: center;
-  }
-  
-  .profile-container {
-    position: absolute;
-    left: -5px;
-    top: 80px;
-    width: 173px;
-    height: 215px;
-  }
-  
-  .edit-profile-button {
-    width: 105px;
-    height: 31px;
-    left: 34px;
-    top: 171px;
-    position: absolute;
-    background: #15AB90;
-    border-radius: 45px;
-    text-align: center;
-    color: white;
-    font-size: 12px;
-    font-family: 'Plus Jakarta Sans';
-    font-weight: 700;
-  }
-  
-  .profile-image {
-    width: 96px;
-    height: 96px;
-    left: 39px;
-    top: 59px;
-    position: absolute;
-    box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
-    border-radius: 200px;
-    border: 4px solid white;
-  }
-  
-  .name {
-    position: absolute;
-    left: 153px;
-    top: 155px;
-    width: 83px;
-    height: 32px;
-    font-size: 14px;
-    font-family: 'Inter';
-    font-weight: 600;
-    line-height: 32px;
-    text-align: center;
-  }
-  
-  .playlists-container {
-    position: absolute;
-    left: 18px;
-    top: 308px;
-    width: 373px;
-    height: 283px;
-  }
-  
-  .playlists-header {
-    width: 81px;
-    height: 30px;
-    left: 6px;
-    top: 0;
-    position: absolute;
-    text-align: center;
-    font-size: 14px;
-    font-family: 'Plus Jakarta Sans';
-    font-weight: 600;
-    letter-spacing: 0.14px;
-  }
-  
-  .playlist-item {
-    position: absolute;
-    left: 0;
-    top: 36px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .playlist-item img {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .playlist-item h2 {
-    font-size: 14px;
-    font-family: 'Plus Jakarta Sans';
-    font-weight: 600;
-  }
-  
-  .playlist-item p {
-    color: #737373;
-    font-size: 12px;
-    font-family: 'Plus Jakarta Sans';
-    font-weight: 400;
-  }
-  
-  .show-all-playlists-button {
-    position: absolute;
-    top: 251px;
-    left: 74px;
-    width: 188px;
-    height: 32px;
-    border-radius: 5px;
-    border: 1px solid #171621;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #171621;
-    font-size: 12px;
-    font-family: 'Inter';
-    font-weight: 500;
-    line-height: 16px;
-  }
-  
+ion-content {
+  --background: linear-gradient(180deg, #15AB90 0%, white 100%);
+}
+
+.divider-line {
+  width: 376px;
+  height: 0px;
+  left: 15px;
+  top: 828px;
+  position: absolute;
+  border: 1px white solid;
+}
+
+.followers-following {
+  position: absolute;
+  left: 147px;
+  top: 191px;
+  width: 171px;
+  height: 38px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.followers-count,
+.following-count {
+  font-size: 12px;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  color: black; 
+}
+
+.followers-label,
+.following-label {
+  font-size: 10px;
+  font-family: 'Plus Jakarta Sans';
+  font-weight: 400;
+  letter-spacing: 0.80px;
+  color: black; 
+}
+
+.profile-section {
+  position: absolute;
+  left: -5px;
+  top: 80px;
+  width: 173px;
+  height: 215px;
+}
+
+.edit-profile-bg {
+  width: 105px;
+  height: 31px;
+  left: 34px;
+  top: 171px;
+  position: absolute;
+  background: #15AB90;
+  border-radius: 45px;
+}
+
+.edit-profile-text {
+  width: 66px;
+  height: 16px;
+  left: 54px;
+  top: 178px;
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans';
+  font-weight: 700;
+}
+
+.profile-image {
+  width: 96px;
+  height: 96px;
+  left: 39px;
+  top: 59px;
+  position: absolute;
+  box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  border-radius: 200px;
+  border: 4px white solid;
+}
+
+.profile-name {
+  position: absolute;
+  left: 153px;
+  top: 155px;
+  width: 83px;
+  height: 32px;
+  font-size: 14px;
+  font-family: 'Inter';
+  font-weight: 600;
+  line-height: 32px;
+  color: black; 
+}
+
+.playlists-section {
+  position: absolute;
+  left: 18px;
+  top: 308px;
+  width: 373px;
+  height: 283px;
+}
+
+.playlist-header {
+  width: 81px;
+  height: 30px;
+  left: 6px;
+  top: 0px;
+  position: absolute;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Plus Jakarta Sans';
+  font-weight: 600;
+  letter-spacing: 0.14px;
+  color: black; 
+}
+
+.playlist-item {
+  position: absolute;
+  left: 0;
+}
+
+.playlist-title {
+  font-size: 14px;
+  font-family: 'Plus Jakarta Sans';
+  font-weight: 600;
+  color: black; 
+}
+
+.playlist-likes {
+  color: #737373;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans';
+  font-weight: 400;
+}
+
+.show-playlists-button {
+  position: absolute;
+  top: 251px;
+  left: 74px;
+  width: 188px;
+  height: 32px;
+  color: black; 
+  border-color: black; 
+}
