@@ -67,6 +67,10 @@
     align-items: center;
   }
 
+  .icon-sides.active {
+    color: #15ab90; 
+  }
+
   .share-icon,
   .heart-icon-fav,
   .heart-icon {
@@ -174,6 +178,8 @@ ion-col {
   ion-icon {
     color: white;
   }
+
+  
 
   ion-back-button {
     color: white;

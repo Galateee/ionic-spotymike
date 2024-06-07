@@ -79,6 +79,7 @@ export class PlayerPage implements OnInit, OnDestroy {
 
   isFavorite: boolean = false;
   isPlaying: boolean = false; // Start with music paused
+  isRepeat: boolean = false; // Manage repeat state
   isExpanded: boolean = false;
   lyrics: string[] = [
     'Beneath the palm trees, we found our way, On this island, where the sun shines every day.',
@@ -93,19 +94,40 @@ export class PlayerPage implements OnInit, OnDestroy {
   intervalId: any;
 
   playMusic() {
-    this.isPlaying = !this.isPlaying;
-    if (this.isPlaying) {
-      this.intervalId = setInterval(() => {
-        this.rangeValue += 1;
-        if (this.rangeValue > 100) {
-          this.rangeValue = 0; // Reset for demo purposes
-        }
-        this.updateLyrics();
-      }, 1000); // Update every second
+    if (this.rangeValue === 100) {
+      this.rangeValue = 0;
+      this.isPlaying = true;
+      this.startPlaybackInterval();
     } else {
-      clearInterval(this.intervalId);
+      this.isPlaying = !this.isPlaying;
+      if (this.isPlaying) {
+        this.startPlaybackInterval();
+      } else {
+        this.pausePlayback();
+      }
     }
   }
+  
+  startPlaybackInterval() {
+    this.intervalId = setInterval(() => {
+      this.rangeValue += 1;
+      if (this.rangeValue > 100) {
+        if (!this.isRepeat) {
+          this.rangeValue = 100;
+          this.isPlaying = false;
+          clearInterval(this.intervalId);
+        } else {
+          this.rangeValue = 0;
+        }
+      }
+      this.updateLyrics();
+    }, 1000); // Update every second
+  }
+  
+  pausePlayback() {
+    clearInterval(this.intervalId); 
+  }
+  
 
   updateLyrics() {
     const lyricIndex = Math.floor(this.rangeValue / (100 / this.lyrics.length));
@@ -123,6 +145,10 @@ export class PlayerPage implements OnInit, OnDestroy {
 
   toggleExpand() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  toggleRepeat() {
+    this.isRepeat = !this.isRepeat;
   }
 
   ngOnInit() {}
