@@ -151,6 +151,29 @@ export class PlayerPage implements OnInit, OnDestroy {
     this.isRepeat = !this.isRepeat;
   }
 
+  skipBack() {
+    this.rangeValue = Math.max(this.rangeValue - 100);
+    this.updateLyrics();
+  }
+
+  skipForward() {
+    this.rangeValue = Math.min(this.rangeValue + 100);
+    this.updateLyrics();
+  }
+
+  shuffleSongs() {
+    this.lyrics = this.shuffleArray(this.lyrics);
+    this.currentLyric = this.lyrics[0];
+    this.rangeValue = 0;
+  }
+  
+  shuffleArray(array: any[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
   ngOnInit() {}
 
   ngOnDestroy() {

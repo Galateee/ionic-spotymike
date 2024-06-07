@@ -41,7 +41,7 @@
       ></ion-icon>
     </ion-col>
     <ion-col size="auto">
-      <ion-icon name="play-skip-back-outline" class="icon-sides"></ion-icon>
+      <ion-icon name="play-skip-back-outline" class="icon-sides" (click)="skipBack()"></ion-icon>
     </ion-col>
     <ion-col size="auto">
       <ion-icon
@@ -51,10 +51,10 @@
       ></ion-icon>
     </ion-col>
     <ion-col size="auto">
-      <ion-icon name="play-skip-forward-outline" class="icon-sides"></ion-icon>
+      <ion-icon name="play-skip-forward-outline" class="icon-sides" (click)="skipForward()"></ion-icon>
     </ion-col>
     <ion-col size="auto">
-      <ion-icon name="shuffle" class="icon-sides"></ion-icon>
+      <ion-icon name="shuffle" class="icon-sides" (click)="shuffleSongs()"></ion-icon>
     </ion-col>
   </ion-row>
 
