@@ -1,4 +1,4 @@
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -33,6 +33,7 @@ import {
   shareSocialOutline,
   shuffle,
 } from 'ionicons/icons';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 
 @Component({
   selector: 'app-player-song',
@@ -58,6 +59,7 @@ import {
     IonToolbar,
     CommonModule,
     FormsModule,
+    HeaderComponent,
   ],
 })
 export class PlayerSongPage implements OnInit, OnDestroy {

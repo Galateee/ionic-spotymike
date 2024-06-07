@@ -9,7 +9,7 @@
     <ion-buttons slot="end">
       <!-- revoir la route de search -->
       <ion-icon *ngIf="endIcon === 'search'" slot="icon-only" name="search-outline" (click)="searchPage()"></ion-icon>
-      <ion-icon *ngIf="endIcon === 'dotes'" slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+      <ion-icon *ngIf="endIcon === 'dotes'" slot="icon-only" name="ellipsis-horizontal" (click)="presentAlert()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -4,6 +4,7 @@ import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonLab
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { searchOutline, ellipsisHorizontal, chevronBackOutline } from 'ionicons/icons';
+import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,8 @@ export class HeaderComponent  implements OnInit {
   @Input() headerTitle?: string;
   @Input() endIcon?: string;
 
+  private alert = inject(AlertService);
+
   constructor() { }
 
   ngOnInit() {
@@ -32,5 +35,8 @@ export class HeaderComponent  implements OnInit {
   }
   searchPage() {
     this.router.navigateByUrl('/search');
+  }
+  presentAlert(){
+    this.alert.presentAlert();
   }
 }

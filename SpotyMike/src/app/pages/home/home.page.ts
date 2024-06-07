@@ -82,7 +82,6 @@ export class HomePage {
 
   onSegmentChanged(val: string) {
     this.selectedSegment = val;
-    console.log( val);
   }
 }
 
