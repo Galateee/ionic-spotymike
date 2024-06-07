@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -59,7 +59,7 @@ import {
     FormsModule,
   ],
 })
-export class PlayerPage implements OnInit {
+export class PlayerPage implements OnInit, OnDestroy {
   constructor() {
     addIcons({
       repeat,
@@ -78,7 +78,7 @@ export class PlayerPage implements OnInit {
   }
 
   isFavorite: boolean = false;
-  isPlaying: boolean = true;
+  isPlaying: boolean = false; // Start with music paused
   isExpanded: boolean = false;
   lyrics: string[] = [
     'Beneath the palm trees, we found our way, On this island, where the sun shines every day.',
@@ -89,15 +89,32 @@ export class PlayerPage implements OnInit {
     'Adventure calls us, with each rising tide, In this magical place, our spirits come alive.',
   ];
   currentLyric: string = this.lyrics[0];
+  rangeValue: number = 0;
+  intervalId: any;
 
   playMusic() {
     this.isPlaying = !this.isPlaying;
+    if (this.isPlaying) {
+      this.intervalId = setInterval(() => {
+        this.rangeValue += 1;
+        if (this.rangeValue > 100) {
+          this.rangeValue = 0; // Reset for demo purposes
+        }
+        this.updateLyrics();
+      }, 1000); // Update every second
+    } else {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  updateLyrics() {
+    const lyricIndex = Math.floor(this.rangeValue / (100 / this.lyrics.length));
+    this.currentLyric = this.lyrics[lyricIndex];
   }
 
   onIonChange(event: any) {
-    const value = event.detail.value;
-    const lyricIndex = Math.floor(value / (100 / this.lyrics.length));
-    this.currentLyric = this.lyrics[lyricIndex];
+    this.rangeValue = event.detail.value;
+    this.updateLyrics();
   }
 
   makeFavorite() {
@@ -109,4 +126,8 @@ export class PlayerPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
+  }
 }

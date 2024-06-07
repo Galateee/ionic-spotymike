@@ -29,7 +29,7 @@
     </ion-row>
   </div>
 
-  <ion-range class="range" (ionChange)="onIonChange($event)"></ion-range>
+  <ion-range class="range" [(ngModel)]="rangeValue" (ionChange)="onIonChange($event)"></ion-range>
 
   <ion-row class="controls">
     <ion-col size="auto">
