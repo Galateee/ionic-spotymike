@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LoginRequestError } from '../interfaces/login';
+import { LoginRequestError, LoginRequestSucess } from '../interfaces/login';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +14,11 @@ export class AuthentificationService {
   constructor() {}
 
   login(email: string, password: string) {
-    return this.http
-      .post(`${this.route}/auth/login`, {
-        email: email,
-        password: password,
-      })
-      .pipe(catchError(this.errorRequest));
+    return this.http.post(`${this.route}/auth/login`, {
+      email: email,
+      password: password,
+    });
+    // .pipe(catchError(this.errorRequest))
   }
   register() {}
 

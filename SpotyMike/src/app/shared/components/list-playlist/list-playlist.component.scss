@@ -1,0 +1,45 @@
+ion-list-header {
+  padding-bottom: 15px;
+}
+
+ion-item {
+  --background: transparent;
+  //padding: 12px 0px;
+  padding-bottom: 11px;
+  align-items: normal;
+
+  .test {
+    ion-label {
+      padding-left: 26px;
+    }
+  }
+
+  .bottom-right-icons {
+    position: absolute;
+    bottom: 11px;
+    right: 16px;
+    ion-button {
+      --background: transparent;
+      --color: white;
+      --border-radius: 50%;
+
+      --border-radius: 50px;
+      --border-color: #404040;
+      --border-style: solid;
+      --border-width: 1px;
+
+      width: 30px;
+      height: 30px;
+    }
+    ion-button:active {
+      --background:#15AB90;
+    }
+  }
+}
+
+img {
+  border-radius: 12px;
+  height: 106px;
+  width: 106px;
+  margin-bottom: 11px;
+}

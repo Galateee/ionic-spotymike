@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <img *ngIf="startIcon === 'profile'" src="assets/img/placeholder.PNG" (click)="profilePage()" />
+      <!-- revoir la redirection : back button renvoi toujours vers home -->
+      <ion-back-button *ngIf="startIcon === 'back'" defaultHref="/" text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ headerTitle }}</ion-title>
+    <ion-buttons slot="end">
+      <!-- revoir la route de search -->
+      <ion-icon *ngIf="endIcon === 'search'" slot="icon-only" name="search-outline" (click)="searchPage()"></ion-icon>
+      <ion-icon *ngIf="endIcon === 'dotes'" slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

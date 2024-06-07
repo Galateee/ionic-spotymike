@@ -1,0 +1,26 @@
+ion-list-header{
+  padding-bottom: 15px;
+}
+
+ion-item {
+  --background: transparent;
+  padding: 12px 0px;
+
+}
+
+img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+ion-note {
+  padding-right: 20px;
+}
+
+ion-list ion-item:first-of-type {
+  padding-top: 0;
+}
+
+ion-list ion-item:last-of-type {
+  padding-bottom: 0;
+}

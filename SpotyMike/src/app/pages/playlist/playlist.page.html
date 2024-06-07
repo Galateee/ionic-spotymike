@@ -1,0 +1,14 @@
+<ion-app class="ion-padding">
+
+  <!-- endIcon : search, dotes -->
+  <!-- startIcon : profile, back -->
+  <app-header startIcon="back" headerTitle="Playlist" endIcon="dotes"></app-header>
+
+  <ion-content [fullscreen]="true">
+
+    <div class="pad">
+      <app-list-playlist headerTitle="" [hasHeader]="false" [hasGetAll]="false"></app-list-playlist>
+    </div>
+  </ion-content>
+
+</ion-app>

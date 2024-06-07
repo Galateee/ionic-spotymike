@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -39,6 +39,7 @@ import {
   templateUrl: './player-song.page.html',
   styleUrls: ['./player-song.page.scss'],
   standalone: true,
+
   imports: [
     IonCardContent,
     IonCard,

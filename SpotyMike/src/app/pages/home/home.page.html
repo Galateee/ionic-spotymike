@@ -1,0 +1,63 @@
+<ion-app class="ion-padding">
+
+  <!-- Header component -->
+  <!-- startIcon : profile, back -->
+  <!-- endIcon : search, dotes -->
+  <app-header startIcon="profile" headerTitle="" endIcon="search"></app-header>
+
+    <!-- New Albums -->
+  <ion-content [fullscreen]="true">
+    <ion-card class="new-album" (click)="albumPage()">
+      <ion-card-header>
+        <ion-card-title>R & B Hits</ion-card-title>
+        <ion-card-subtitle>New Album</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Discover 87 songs!</p>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <img src="assets/img/placeholder.PNG" />
+      </ion-card-content>
+    </ion-card>
+
+    <app-segment headerTitle="Music Genres" [hasHeader]="true" [hasGetAll]="true" (numberChange)="onSegmentChanged($event)"></app-segment>
+
+    @if ( selectedSegment === 'all') {
+            <!-- Music Genres component -->
+      <!-- Top Songs component -->
+      <app-card-display value="topSongs" headerTitle="Top Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+      <!-- Last played component -->
+      <app-song-list headerTitle="Last Played" [hasHeader]="true" [hasGetAll]="true"></app-song-list>
+      <!-- Top Albums component -->
+      <app-card-display value="topAlbums" headerTitle="Top Albums" [hasHeader]="true" [hasGetAll]="false"></app-card-display>
+      <!-- Top Artists component -->
+      <app-card-display value="topArtists" headerTitle="Top Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+      <!-- Playlist component -->
+      <app-list-playlist headerTitle="Playlist" [hasHeader]="true" [hasGetAll]="true"></app-list-playlist>
+    }
+    @else if (selectedSegment === 'rnb') {
+      <!-- Top Songs component -->
+      <app-card-display value="topSongs" headerTitle="Top R&B Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+      <!-- Top Albums component -->
+      <app-card-display value="topAlbums" headerTitle="Top R&B Albums" [hasHeader]="true" [hasGetAll]="false"></app-card-display>
+      <!-- Top Artists component -->
+      <app-card-display value="topArtists" headerTitle="Top R&B Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+    }
+    @else if (selectedSegment === 'pop') {
+      <!-- Top Songs component -->
+      <app-card-display value="topSongs" headerTitle="Top Pop Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+      <!-- Top Albums component -->
+      <app-card-display value="topAlbums" headerTitle="Top Pop Albums" [hasHeader]="true" [hasGetAll]="false"></app-card-display>
+      <!-- Top Artists component -->
+      <app-card-display value="topArtists" headerTitle="Top Pop Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+    }
+    @else if (selectedSegment === 'rock') {
+      <!-- Top Songs component -->
+      <app-card-display value="topSongs" headerTitle="Top Rock Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+      <!-- Top Albums component -->
+      <app-card-display value="topAlbums" headerTitle="Top Rock Albums" [hasHeader]="true" [hasGetAll]="false"></app-card-display>
+      <!-- Top Artists component -->
+      <app-card-display value="topArtists" headerTitle="Top Rock Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
+    }
+
+  </ion-content>
+</ion-app>
