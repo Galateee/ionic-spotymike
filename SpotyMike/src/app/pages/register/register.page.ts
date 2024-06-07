@@ -16,6 +16,8 @@ import {
   IonItem,
   IonInput,
   IonButton,
+  IonRadio,
+  IonRadioGroup,
   IonIcon, IonRow, IonCol, IonImg, IonGrid, IonLabel } from '@ionic/angular/standalone';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -29,6 +31,8 @@ import { ModalController } from '@ionic/angular';
   standalone: true,
   imports: [IonLabel, IonGrid, IonImg, IonCol, IonRow, 
     IonIcon,
+    IonRadioGroup,
+    IonRadio,
     IonItem,
     IonList,
     IonTitle,
@@ -83,15 +87,6 @@ export class RegisterPage implements OnInit {
     }
   }
 
-  clearError(fieldName: string) {
-    if (this.form.controls[fieldName].invalid) {
-      this.form.controls[fieldName].markAsUntouched();
-    }
-  }
-
-  isFieldFocused(fieldName: string): boolean {
-    return document.activeElement === document.querySelector(`ion-input[name='${fieldName}']`);
-  }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

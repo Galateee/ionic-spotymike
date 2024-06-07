@@ -1,108 +1,85 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Sign Up</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" dir="rtl">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Sign Up</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
+<ion-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <ion-list class="bg-transparent">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label class="input-label">First Name</ion-label>
-            <ion-item>
-              <ion-input type="text" formControlName="firstName" name="firstName" labelPlacement="floating" placeholder="John"></ion-input>
-            </ion-item>
-            @if(form.get('firstName')?.invalid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)){
-            <div>
-              @if(form.get('firstName')?.errors?.['required']){
-              <p class="error"><ion-icon name="alert-outline"></ion-icon>First name is required</p>
-              }
-            </div>
-            }
-          </ion-col>
-          <ion-col>
-            <ion-label class="input-label">Last Name</ion-label>
-            <ion-item>
-              <ion-input type="text" formControlName="lastName" name="lastName"  labelPlacement="floating" placeholder="Doe"></ion-input>
-            </ion-item>
-            @if(form.get('lastName')?.invalid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)){
-            <div>
-              @if(form.get('lastName')?.errors?.['required']){
-              <p class="error"><ion-icon name="alert-outline"></ion-icon>Last name is required</p>
-              }
-            </div>
-            }
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-label class="input-label">Email</ion-label>
-      <ion-item>
-        <ion-input type="email" formControlName="email" name="email" labelPlacement="floating" placeholder="mike@mike.mike"></ion-input>
-      </ion-item>
-      @if(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)){
-      <div>
-        @if(form.get('email')?.errors?.['required']){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ 'auth.email_require'|translate }}</p>
-        }
-        @else if(form.get('email')?.errors?.['pattern']){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ 'auth.email_format'|translate }}</p>
-        }
+    <div class="container">
+      <div class="title">
+        Sign Up
       </div>
-      }
-      <ion-label class="input-label">Password</ion-label>
-      <ion-item>
-        <ion-input type="password" formControlName="password" name="password" labelPlacement="floating" placeholder="••••••••••••••"></ion-input>
-      </ion-item>
-      @if(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)){
-      <div>
-        @if(form.get('password')?.errors?.['required']){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>Password is required</p>
-        }
-        @else if(form.get('password')?.errors?.['pattern']){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>Password format is invalid</p>
-        }
-        @else if(form.get('password')?.errors?.['minlength']){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>Password size is invalid</p>
-        }
+
+      <div class="name-fields">
+        <div class="input-container">
+          <ion-label class="label">Firstname</ion-label>
+          <ion-input formControlName="firstname" placeholder="Mike" class="input"></ion-input>
+          <div *ngIf="form.get('firstname')?.invalid && (form.get('firstname')?.dirty || form.get('firstname')?.touched)">
+            <p class="error"><ion-icon name="alert-outline"></ion-icon>Firstname is required</p>
+          </div>
+        </div>
+        <div class="input-container">
+          <ion-label class="label">Lastname</ion-label>
+          <ion-input formControlName="lastname" placeholder="Mike" class="input"></ion-input>
+          <div *ngIf="form.get('lastname')?.invalid && (form.get('lastname')?.dirty || form.get('lastname')?.touched)">
+            <p class="error"><ion-icon name="alert-outline"></ion-icon>Lastname is required</p>
+          </div>
+        </div>
       </div>
-      }
-      <ion-label class="input-label">DateBirth</ion-label>
-      <ion-item>
-        <ion-input type="date" formControlName="dateOfBirth" name="dateOfBirth"></ion-input>
-      </ion-item>
-      <ion-label class="input-label">Phone Number</ion-label>
-      <ion-item>
-        <ion-input type="tel" formControlName="phoneNumber" name="phoneNumber" labelPlacement="floating" placeholder="123-456-7890"></ion-input>
-      </ion-item>
-      @if(form.get('phoneNumber')?.invalid && (form.get('phoneNumber')?.dirty || form.get('phoneNumber')?.touched)){
-      <div>
-        @if(form.get('phoneNumber')?.errors?.['required']){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>Phone number is required</p>
-        }
+
+      <div class="single-input-container">
+        <ion-label class="label">Email</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="mike@mike.mike" class="input"></ion-input>
+        <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
+          <p class="error"><ion-icon name="alert-outline"></ion-icon>
+            <span *ngIf="form.get('email')?.errors?.['required']">Email is required</span>
+            <span *ngIf="form.get('email')?.errors?.['email']">Invalid email format</span>
+          </p>
+        </div>
       </div>
-      }
-      <ion-label class="input-label">Sexe</ion-label>
-      <ion-item>
-        <ion-select formControlName="gender" name="gender">
 
-        </ion-select>
-      </ion-item>
+      <div class="single-input-container">
+        <ion-label class="label">Password</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="••••••••••••••" class="input"></ion-input>
+        <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+          <p class="error"><ion-icon name="alert-outline"></ion-icon>
+            <span *ngIf="form.get('password')?.errors?.['required']">Password is required</span>
+            <span *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least 8 characters</span>
+          </p>
+        </div>
+      </div>
 
-    </ion-list>
-    <br>
-    @if(error){
-    <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ error }}</p>
-    }
-    <br>
+      <div class="single-input-container">
+        <ion-label class="label">Date of Birth</ion-label>
+        <ion-input formControlName="dateOfBirth" placeholder="mm/dd/yyyy" class="input"></ion-input>
+        <div *ngIf="form.get('dateOfBirth')?.invalid && (form.get('dateOfBirth')?.dirty || form.get('dateOfBirth')?.touched)">
+          <p class="error"><ion-icon name="alert-outline"></ion-icon>Date of Birth is required</p>
+        </div>
+      </div>
 
-    <ion-button type="submit" [disabled]="!form.valid && !submitForm">Se Connecter</ion-button>
+      <div class="single-input-container">
+        <ion-label class="label">Tel</ion-label>
+        <ion-input formControlName="tel" placeholder="+1 (555) 000-0000" class="input"></ion-input>
+        <div *ngIf="form.get('tel')?.invalid && (form.get('tel')?.dirty || form.get('tel')?.touched)">
+          <p class="error"><ion-icon name="alert-outline"></ion-icon>Invalid phone number</p>
+        </div>
+      </div>
+
+      <div class="gender-selection">
+        <ion-radio-group formControlName="gender">
+          <ion-item>
+            <ion-radio slot="start" value="female" checked></ion-radio>
+            <ion-label>Femme</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-radio slot="start" value="male"></ion-radio>
+            <ion-label>Homme</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+
+      <ion-button expand="block" class="signup-button" [disabled]="form.invalid">
+        S’inscrire
+      </ion-button>
+
+      <div class="already-registered">
+        Déjà inscrit ?
+      </div>
+    </div>
   </form>
 </ion-content>

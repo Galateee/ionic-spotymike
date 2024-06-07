@@ -24,7 +24,6 @@ import { LoginRequestError } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
-import { RegisterPage } from '../register/register.page';
 
 @Component({
   selector: 'app-login',
@@ -94,10 +93,7 @@ export class LoginPage implements OnInit {
     modal.present();
   }
 
-  async onRegister() {
-    const modal = await this.modalCtl.create({
-      component: RegisterPage,
-    });
-    modal.present();
+  onRegister() {
+    this.router.navigateByUrl('/auth/register');
   }
 }

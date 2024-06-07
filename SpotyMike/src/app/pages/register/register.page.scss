@@ -1,138 +1,89 @@
-app-login {
-    width: 100%;
-  }
-  
-  ion-content::part(background) {
-    background: rgb(122, 111, 249);
-    background: linear-gradient(180deg, rgba(122, 111, 249, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%);
-  }
-  
-  ion-grid {
-    height: 100%;
-  }
-  
-  ion-grid ion-row {
-    height: auto;
-  }
-  
-  .logo {
-    padding: 25% 0;
-  }
-  
-  form {
-    padding: 5% 5%;
-    text-align: center;
-    background: transparent;
-  }
-  
-  .list-ios {
-    background: transparent !important;
-  }
-  
-  form ion-list {
-    padding: 0;
-    background: transparent;
-  }
-  
-  .input-group {
-    margin-bottom: 1rem;
-  }
-  
-  .input-label {
-    color: #000000;
-    text-align: left;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  form ion-list ion-item {
-    --background: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-    background: #ffffff !important;
-  }
-  
-  form ion-list ion-item ion-input {
-    --background: #ffffff;
-    --color: #000000;
-    --placeholder-color: #000000;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
-    background: #ffffff;
-  }
-  
-  form ion-button {
-    --color: white;
-    --background: #15AB90;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    font-size: 1rem;
-  }
-  
-  form a {
-    font-size: 0.875rem;
-    display: block;
-    color: #15AB90;
-    text-decoration: none;
-    margin-top: 1rem;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-  }
-  
-  form ion-button:hover,
-  form ion-button:focus {
-    --background:#15AB90;
-  }
-  
-  ion-item {
-    --border-width: 0;
-    --inner-border-width: 0;
-  }
-  
-  ion-title {
-    font-size: 1.25rem;
-    background: transparent !important;
-    padding: 0.5rem 0;
-    text-align: center;
-    width: 100%;
-  }
-  
-  ion-toolbar {
-    --background: transparent !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none !important;
-    box-shadow: none;
-  }
-  
-  .form-label {
-    padding: 0 5%;
-  }
-  
-  .input-label {
-    color: #000000;
-    text-align: left;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  ion-item {
-    display: flex;
-    align-items: center;
-  }
-  
-  ion-item ion-label {
-    min-width: 100px;
-    text-align: left;
-  }
-  
+ion-content {
+  --background: rgb(122,111,249);
+  --background: linear-gradient(186deg, rgba(122,111,249,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+}
+
+.container {
+  height: 812px;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 122px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-size: 20px;
+  font-family: 'Plus Jakarta Sans';
+  font-weight: 600;
+}
+
+.name-fields {
+  position: absolute;
+  top: 176px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.input-container {
+  width: 48%;
+}
+
+.single-input-container {
+  position: absolute;
+  width: 320px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.single-input-container:nth-child(3) { top: 262px; }
+.single-input-container:nth-child(4) { top: 347px; }
+.single-input-container:nth-child(5) { top: 432px; }
+.single-input-container:nth-child(6) { top: 517px; }
+
+.label {
+  color: #344054;
+  font-size: 14px;
+  font-family: 'Inter';
+  font-weight: 500;
+}
+
+.input {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #D0D5DD;
+  padding: 10px 14px;
+}
+
+.gender-selection {
+  position: absolute;
+  top: 609px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.signup-button {
+  position: absolute;
+  top: 668px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #15AB90;
+  border-radius: 10px;
+}
+
+.already-registered {
+  position: absolute;
+  top: 731px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #15AB90;
+  font-size: 12px;
+  font-family: 'Inter';
+  font-weight: 500;
+}
