@@ -36,8 +36,8 @@ import {
 
 @Component({
   selector: 'app-player',
-  templateUrl: './player.page.html',
-  styleUrls: ['./player.page.scss'],
+  templateUrl: './player-song.page.html',
+  styleUrls: ['./player-song.page.scss'],
   standalone: true,
   imports: [
     IonCardContent,
