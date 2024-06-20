@@ -42,7 +42,28 @@ export class HomePage {
 
   private albumService = inject(FirestoreService);
   constructor() {
-    this.albumService.getAlbums();
+    this.albumService.getAllUsers().then(usersList => {
+      console.log('usersList result:', usersList);
+    });
+    this.albumService.getAllArtists().then(artistsList => {
+      console.log('artistsList result:', artistsList);
+    });
+    this.albumService.getAllAlbums().then(albumsList => {
+      console.log('albumsList result:', albumsList);
+    });
+    this.albumService.getAllSongs().then(songsList => {
+      console.log('songsList result:', songsList);
+    });
+    this.albumService.getAllPlaylist().then(playlistsList => {
+      console.log('playlistsList result:', playlistsList);
+    }).catch(error => {
+      console.error('Error:', error);
+    });
+
+    this.albumService.getAlbumsWithArtists().then(usersList => {
+      console.log('Test Result:', usersList);
+    });
+
   }
   ngOnInit() {
     addIcons({ arrowForwardOutline });
