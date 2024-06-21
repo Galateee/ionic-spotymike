@@ -40,37 +40,32 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
 })
 export class HomePage {
 
-  private albumService = inject(FirestoreService);
-  constructor() {
-    this.albumService.getAllUsers().then(usersList => {
-      console.log('usersList result:', usersList);
-    });
-    this.albumService.getAllArtists().then(artistsList => {
-      console.log('artistsList result:', artistsList);
-    });
-    this.albumService.getAllAlbums().then(albumsList => {
-      console.log('albumsList result:', albumsList);
-    });
-    this.albumService.getAllSongs().then(songsList => {
-      console.log('songsList result:', songsList);
-    });
-    this.albumService.getAllPlaylist().then(playlistsList => {
-      console.log('playlistsList result:', playlistsList);
-    }).catch(error => {
-      console.error('Error:', error);
-    });
+  lastAlbum: any[] = [];
+  lastAlbumSongsCount: number = 0;
 
-    this.albumService.getAlbumsWithArtists().then(usersList => {
-      console.log('Test Result:', usersList);
-    });
+  private fireStoreService = inject(FirestoreService);
+  private router = inject(Router);
+  
+  constructor() {
+    
 
   }
+  
   ngOnInit() {
     addIcons({ arrowForwardOutline });
+    this.loadLastAlbum();
   }
-
-  private router = inject(Router);
-
+  
+  async loadLastAlbum() {
+    this.lastAlbum = await this.fireStoreService.getLastAlbum();
+    console.log('Last album data :',this.lastAlbum);
+    
+    const songs = await this.fireStoreService.getSongsByAlbum(this.lastAlbum[0].id);  
+    this.lastAlbumSongsCount = songs.length;
+    console.log('Number of song in the last album :',this.lastAlbumSongsCount);
+    
+  }
+  
   likePage() {
     this.router.navigateByUrl('/home/like');
   }
@@ -98,9 +93,8 @@ export class HomePage {
   albumPage() {
     this.router.navigateByUrl('/album');
   }
-
+  
   selectedSegment: string = 'all';
-
   onSegmentChanged(val: string) {
     this.selectedSegment = val;
   }

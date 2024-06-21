@@ -4,6 +4,10 @@ app-home {
 
 .new-album {
   margin-bottom: auto;
+  ion-card-title {
+    font-size: 23px;
+  }
+
   ion-icon {
     font-size: 25px;
     padding-top: 3%;

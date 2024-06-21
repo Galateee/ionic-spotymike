@@ -1,25 +1,28 @@
-  import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-  import { initializeApp } from 'firebase/app';
-  import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    where,
-    limit,
-    doc,
-    getDoc,
-    DocumentReference,
-    orderBy,
-  } from 'firebase/firestore/lite';
+import { initializeApp } from 'firebase/app';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+  limit,
+  doc,
+  getDoc,
+  DocumentReference,
+  orderBy,
+} from 'firebase/firestore/lite';
 
-  import { environment } from '../../../environments/environment.prod';
+import { IArtist } from '../interfaces/artist';
+import { IAlbum } from '../interfaces/album';
+import { ISong } from '../interfaces/song';
+
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class FirestoreService {
   private app = initializeApp(environment.firebase);
   private db = getFirestore(this.app);
@@ -86,31 +89,51 @@ export class FirestoreService {
     return albumsList;
   }
 
-  // Get albums and corresponding artists
-  async getAlbumsWithArtists() {
-    const albumsCol = collection(this.db, 'albums');
-    const albumsSnapshot = await getDocs(albumsCol);
-    const albumsList = albumsSnapshot.docs.map((doc) => ({
-      artistId: doc.id,
-      ...doc.data(),
-    }));
+  // get albums and corresponding artists
+    async getAlbumsWithArtists() {
+      const albumsCol = collection(this.db, 'albums');
+      const albumsSnapshot = await getDocs(albumsCol);
+      const albumsList = albumsSnapshot.docs.map((doc) => ({
+        artistId: doc.data()['artistId'],
+        album_name: doc.data()['nom'],
+      }));
 
-    const artistsPromises = albumsList.map(async (album) => {
-      if (album.artistId) {
-        const artistDoc = await getDoc(doc(this.db, 'artists', album.artistId));
-        return {
-          ...album,
-          artist: artistDoc.exists() ? artistDoc.data() : null,
-        };
-      } else {
-        return {
-          ...album,
-          artist: null,
-        };
-      }
-    });
-    const albumsWithArtists = await Promise.all(artistsPromises);
-    return albumsWithArtists;
-  }
+      const artistsPromises = albumsList.map(async (album) => {
+        if (album.artistId) {
+          const artistDoc = await getDoc(doc(this.db, 'artists', album.artistId));
+          return {
+            ...album,
+            artist_name: artistDoc.exists() ? artistDoc.data()['fullname'] : null,
+          };
+        } else {
+          return {
+            ...album,
+            artist_name: null,
+          };
+        }
+      });
+      const albumsWithArtists = await Promise.all(artistsPromises);
+      return albumsWithArtists;
+    }
 
+    // get last album
+    async getLastAlbum() {
+      const albumCol = collection(this.db, 'albums');
+      const q = query(albumCol, orderBy('created_at', 'desc'), limit(1));
+      const albumSnapshot = await getDocs(q);
+      const albumList = albumSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      return albumList;
+    }
+
+    // get songs by 1 album
+    async getSongsByAlbum(id: string) {
+      const songsCol = collection(this.db,'songs');
+      const q = query(songsCol, where('albumId', '==', id));
+      const songsSnapshot = await getDocs(q);
+      const songsList = songsSnapshot.docs.map((doc) => doc.data());
+      return songsList;
+    }
 }
