@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore/lite";
 import { IUser } from "./user";
 
 export interface IArtist {
-    userId: IUser[];
+    userId: string;
     fullname: string;
     label: string;
     description?: string;

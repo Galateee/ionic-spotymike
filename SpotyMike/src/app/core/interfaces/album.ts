@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore/lite";
 import { IArtist } from "./artist";
 
 export interface IAlbum {
-    artistId: IArtist[];
+    artistId: string;
     nom: string;
     cover: string;
     year: string;

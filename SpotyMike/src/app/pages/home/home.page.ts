@@ -43,6 +43,8 @@ export class HomePage {
   lastAlbum: any[] = [];
   lastAlbumSongsCount: number = 0;
 
+  // getTest: any[] = [];
+
   private fireStoreService = inject(FirestoreService);
   private router = inject(Router);
   
@@ -53,6 +55,7 @@ export class HomePage {
   ngOnInit() {
     addIcons({ arrowForwardOutline });
     this.loadLastAlbum();
+    // this.loadTestFirestore();
   }
   
   async loadLastAlbum() {
@@ -63,6 +66,19 @@ export class HomePage {
     this.lastAlbumSongsCount = songs.length;
     console.log('Number of song in the last album :',this.lastAlbumSongsCount);
   }
+
+  // async loadTestFirestore() {
+  //   this.getTest = await this.fireStoreService.getAlbumsWithArtists();
+  //   console.log('TEST data :',this.getTest);
+  //   this.getAllArtists = await this.fireStoreService.getAllArtists();
+  //   console.log('All artists data :',this.getAllArtists);
+  //   this.getAlbums = await this.fireStoreService.getAlbums();
+  //   console.log('All albums data :',this.getAlbums);
+  //   this.getAllSongs = await this.fireStoreService.getAllSongs();
+  //   console.log('All songs data :',this.getAllSongs);
+  //   this.getAllPlaylists = await this.fireStoreService.getAllPlaylists();
+  //   console.log('All playlists data :',this.getAllPlaylists);
+  // }
 
   likePage() {
     this.router.navigateByUrl('/home/like');
