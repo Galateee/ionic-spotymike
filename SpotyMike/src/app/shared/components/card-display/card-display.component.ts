@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input, inject } from '@angular/core';
 import { IonListHeader, IonLabel, IonButton, IonRow, IonCol, IonCard, IonCardContent } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
 
 @Component({
   selector: 'app-card-display',
@@ -18,45 +19,33 @@ export class CardDisplayComponent  implements OnInit {
   @Input() hasHeader?: boolean;
   @Input() hasGetAll?: boolean;
 
-  data?: any[];
+  topSongs: any[] = []; 
+  topAlbums: any[] = []; 
+  topArtists: any[] = []; 
+  
+  private fireStoreService = inject(FirestoreService);
 
   constructor() { }
 
   ngOnInit() {
-    this.setData();
+
+    this.loadTop();
   }
 
-  setData() {
-    switch (this.value) {
-      case 'topSongs':
-        this.data = this.topSongs;
-        break;
-      case 'topAlbums':
-        this.data = this.topAlbums;
-        break;
-      case 'topArtists':
-        this.data = this.topArtists;
-        break;
-      default:
-        this.data = [];
+  async loadTop() {
+    if (this.value == "topSongs") {
+      this.topSongs = await this.fireStoreService.getTopSongsWithArtists();
+      console.log('Top 3 songs (all):',this.topSongs);
+    }
+    if (this.value == "topAlbums") {
+      this.topAlbums = await this.fireStoreService.getTopAlbumsWithArtists();
+      console.log('Top 3 albums (all):',this.topAlbums);
+    }
+    if (this.value == "topArtists") {
+      this.topArtists = await this.fireStoreService.getTopArtistsByFollowers();
+      console.log('Top 3 artists (all):',this.topArtists);
     }
   }
-
-  topSongs = [
-    { title: 'Starry Skies', artist: 'Amelia Cantata' },
-    { title: 'Sunset Serenity', artist: 'Olivia Lyric' },
-    { title: 'Eternal Sunset', artist: 'Mason Chorus' },
-  ];
-  topAlbums = [
-    { title: 'Starry Skies', artist: 'Amelia Cantata' },
-    { title: 'Sunset Serenity', artist: 'Olivia Lyric' },
-    { title: 'Eternal Sunset', artist: 'Mason Chorus' },
-  ];
-  topArtists = [
-    { avatar: '' },
-    { avatar: '' },
-    { avatar: '' },
-  ];
 
   private router = inject(Router);
   valuePage() {

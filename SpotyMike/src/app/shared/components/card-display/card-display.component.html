@@ -8,15 +8,38 @@
 
   <div class="card-container">
     <ion-row>
-      <ion-col *ngFor="let item of data">
+      @if (value === 'topSongs') {
+      <ion-col *ngFor="let item of topSongs">
         <ion-card (click)="valuePage()">
           <img src="assets/img/placeholder.PNG" alt="item" />
           <ion-card-content>
-            <h3 *ngIf="item.artist">{{ item.artist }}</h3>
-            <p *ngIf="item.title">{{ item.title }}</p>
+            <h3 *ngIf="item.title">{{ item.title }}</h3>
+            <p *ngIf="item.artist_name">{{ item.artist_name }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
+      } 
+      @if (value === 'topAlbums') {
+      <ion-col *ngFor="let item of topAlbums">
+        <ion-card (click)="valuePage()">
+          <img src="assets/img/placeholder.PNG" alt="item" />
+          <ion-card-content>
+            <h3 *ngIf="item.album_name">{{ item.album_name }}</h3>
+            <p *ngIf="item.artist_name">{{ item.artist_name }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      }
+      @if (value === 'topArtists') {
+        <ion-col *ngFor="let item of topArtists">
+          <ion-card (click)="valuePage()">
+            <img src="assets/img/placeholder.PNG" alt="item" />
+            <ion-card-content>
+              <h3 *ngIf="item.fullname">{{ item.fullname }}</h3>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        }
     </ion-row>
   </div>
 </div>

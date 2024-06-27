@@ -47,7 +47,6 @@ export class HomePage {
   private router = inject(Router);
   
   constructor() {
-    
 
   }
   
@@ -63,9 +62,8 @@ export class HomePage {
     const songs = await this.fireStoreService.getSongsByAlbum(this.lastAlbum[0].id);  
     this.lastAlbumSongsCount = songs.length;
     console.log('Number of song in the last album :',this.lastAlbumSongsCount);
-    
   }
-  
+
   likePage() {
     this.router.navigateByUrl('/home/like');
   }
