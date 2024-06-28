@@ -1,16 +1,35 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, inject } from '@angular/core';
-import { IonItem, IonList, IonThumbnail, IonLabel, IonNote, IonListHeader, IonButton, IonIcon, IonAlert, AlertController } from "@ionic/angular/standalone";
+import {
+  IonItem,
+  IonList,
+  IonThumbnail,
+  IonLabel,
+  IonNote,
+  IonListHeader,
+  IonButton,
+  IonIcon,
+  IonAlert,
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { ellipsisVertical, heartOutline, shareSocialOutline } from 'ionicons/icons';
+import {
+  ellipsisVertical,
+  heartOutline,
+  shareSocialOutline,
+} from 'ionicons/icons';
 import { AlertService } from 'src/app/core/services/alert.service';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
+
 @Component({
   selector: 'app-list-playlist',
   templateUrl: './list-playlist.component.html',
   styleUrls: ['./list-playlist.component.scss'],
   standalone: true,
-  imports: [IonAlert, IonIcon, IonButton,
+  imports: [
+    IonAlert,
+    IonIcon,
+    IonButton,
     IonItem,
     IonList,
     IonThumbnail,
@@ -20,33 +39,36 @@ import { AlertService } from 'src/app/core/services/alert.service';
     CommonModule,
   ],
 })
-export class ListPlaylistComponent  implements OnInit {
-
+export class ListPlaylistComponent implements OnInit {
   @Input() hasHeader?: boolean;
   @Input() headerTitle?: string;
   @Input() hasGetAll?: boolean;
 
+  playlist: any[] = [];
+
+  private fireStoreService = inject(FirestoreService);
+  private router = inject(Router);
+
   private alert = inject(AlertService);
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void{
-    addIcons({ ellipsisVertical, heartOutline, shareSocialOutline});
+  ngOnInit(): void {
+    addIcons({ ellipsisVertical, heartOutline, shareSocialOutline });
+    this.loadPlaylist();
   }
 
-  presentAlert(){
+  async loadPlaylist() {
+    this.playlist = await this.fireStoreService.getPlaylistsWithDetails();
+    console.log('Playlist :',this.playlist);
+  }
+
+  presentAlert() {
     this.alert.presentAlert();
   }
 
-  private router = inject(Router);
   playerSongPage() {
     this.router.navigateByUrl('/list-song');
   }
 
-  songs = [
-    { title: 'Dusty Roads', artist: 'Jakob Press', songs: '39 songs' },
-    { title: 'Golden Sunset', artist: 'Davis Calzoni', songs: '39 songs' },
-    { title: 'Lost Soul', artist: 'Jaxon Bergson', songs: '39' },
-    { title: 'Summer love', artist: 'Charlie Aminoff', songs: '39 songs' },
-  ];
 }

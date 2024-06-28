@@ -5,13 +5,13 @@
     <ion-button class="seeAllButton" *ngIf="hasGetAll" href="/home/playlist">See All</ion-button>
   </ion-list-header>
 
-  <ion-item *ngFor="let song of songs">
+  <ion-item *ngFor="let item of playlist">
     <img class="test" src="assets/img/placeholder.PNG" (click)="playerSongPage()"/>
     <div class="test" (click)="playerSongPage()">
       <ion-label>
-        <h2>{{ song.title }}</h2>
-        <h3>{{ song.artist }}</h3>
-        <p>{{ song.songs }}</p>
+        <h2>{{ item.title }}</h2>
+        <h3>{{ item.creatorName }}</h3>
+        <p>{{ item.songCount }} songs</p>
       </ion-label>
     </div>
     <ion-icon slot="end" name="ellipsis-vertical" (click)="presentAlert()"></ion-icon>

@@ -41,7 +41,6 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
 export class HomePage {
 
   lastAlbum: any[] = [];
-  lastAlbumSongsCount: number = 0;
 
   // getTest: any[] = [];
 
@@ -60,11 +59,7 @@ export class HomePage {
   
   async loadLastAlbum() {
     this.lastAlbum = await this.fireStoreService.getLastAlbum();
-    console.log('Last album data :',this.lastAlbum);
-    
-    const songs = await this.fireStoreService.getSongsByAlbum(this.lastAlbum[0].id);  
-    this.lastAlbumSongsCount = songs.length;
-    console.log('Number of song in the last album :',this.lastAlbumSongsCount);
+    console.log('Last album :',this.lastAlbum);
   }
 
   // async loadTestFirestore() {

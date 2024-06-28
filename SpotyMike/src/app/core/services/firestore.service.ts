@@ -74,20 +74,30 @@ export class FirestoreService {
     return Promise.all(albumsWithArtistsPromises);
   }
 
-  // get last album
+  // get last album with their songs count
   async getLastAlbum() {
     const albumsCol = collection(this.db, 'albums');
     const q = query(albumsCol, orderBy('created_at', 'desc'), limit(1));
     const albumSnapshot = await getDocs(q);
-    return albumSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  }
+    const album = albumSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      nom: doc.data()['nom'],
+    }));
 
-  // get songs by 1 album
-  async getSongsByAlbum(albumId: string) {
-    const songsCol = collection(this.db, 'songs');
-    const q = query(songsCol, where('albumId', '==', albumId));
-    const songsSnapshot = await getDocs(q);
-    return songsSnapshot.docs.map((doc) => doc.data() as ISong);
+    const albumWithDetailsPromises = album.map(async (album) => {
+      const songCountQuery = query(
+        collection(this.db, 'songs'),
+        where('albumId', '==', album.id)
+      );
+      const songsSnapshot = await getDocs(songCountQuery);
+      const songCount = songsSnapshot.size;
+      return {
+        nom: album.nom,
+        songCount,
+      };
+    });
+
+    return Promise.all(albumWithDetailsPromises);
   }
 
   // get top 3 songs with their artist's name ordered by listen
@@ -162,7 +172,7 @@ export class FirestoreService {
 
   // get last played songs
   async getLastPlayedSongs() {
-    const songsCol = collection(this.db,'songs');
+    const songsCol = collection(this.db, 'songs');
     const q = query(songsCol, orderBy('dateEcoute', 'desc'), limit(4));
     const songsSnapshot = await getDocs(q);
     const songsList = songsSnapshot.docs.map((doc) => doc.data() as ISong);
@@ -184,5 +194,33 @@ export class FirestoreService {
     return Promise.all(songsWithArtistsPromises);
   }
 
-  // 
+  // get playlists with songs count and creator's name
+  async getPlaylistsWithDetails() {
+    const playlistsCol = collection(this.db, 'playlists');
+    const q = query(playlistsCol, limit(4)); // Adding the limit of 4 here
+    const playlistSnapshot = await getDocs(q);
+    const playlists = playlistSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      title: doc.data()['title'],
+      creatorName: doc.data()['creatorName'],
+    }));
+
+    const playlistsWithDetailsPromises = playlists.map(async (playlist) => {
+      const songCountQuery = query(
+        collection(this.db, 'songs'),
+        where('playlistId', '==', playlist.id)
+      );
+      const songsSnapshot = await getDocs(songCountQuery);
+      const songCount = songsSnapshot.size;
+      return {
+        title: playlist.title,
+        creatorName: playlist.creatorName,
+        songCount,
+      };
+    });
+
+    return Promise.all(playlistsWithDetailsPromises);
+  }
+
+  //
 }

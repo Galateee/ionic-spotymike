@@ -27,6 +27,7 @@ export class SegmentComponent  implements OnInit {
   segmentChanged(event: any) {
     this.selectedSegment = event.detail.value;
     this.numberChange.emit(event.detail.value)
+    console.clear();
   }
 
 }

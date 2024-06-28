@@ -56,7 +56,7 @@ export class SongListComponent implements OnInit {
 
   async loadLastPlayedSongs() {
     this.lastPlayedSongs = await this.fireStoreService.getLastPlayedSongs();
-    console.log('Last Played Songs :',this.lastPlayedSongs);
+    console.log('Last Played :',this.lastPlayedSongs);
   }
 
   presentAlert() {
@@ -70,10 +70,4 @@ export class SongListComponent implements OnInit {
     this.router.navigateByUrl('/search');
   }
 
-  songs = [
-    { title: 'Dusty Roads', artist: 'Jakob Press', duration: '5:33' },
-    { title: 'Golden Sunset', artist: 'Davis Calzoni', duration: '2:33' },
-    { title: 'Lost Soul', artist: 'Jaxon Bergson', duration: '1:33' },
-    { title: 'Summer love', artist: 'Charlie Aminoff', duration: '7:33' },
-  ];
 }

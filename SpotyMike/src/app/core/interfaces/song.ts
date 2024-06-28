@@ -5,6 +5,7 @@ export interface ISong {
     title: string;
     cover: string;
     albumId: string;
+    playlistId: string;
     nbEcoutes: number;
     dateEcoute: Timestamp;
 }
