@@ -11,7 +11,7 @@ export class AlertService {
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'DEV à faire',
-      subHeader: 'Attend un peu poto, c\'est pas encore fini !',
+      subHeader: 'Maintenance / Indisponible pour le moment',
       buttons: ['Retour'],
     });
 

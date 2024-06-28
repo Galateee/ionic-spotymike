@@ -5,15 +5,16 @@
     <ion-button class="seeAllButton" *ngIf="hasGetAll" href="/list-song">See All</ion-button>
   </ion-list-header>
 
-  <ion-item *ngFor="let song of songs">
+  <ion-item *ngFor="let item of lastPlayedSongs">
     <ion-thumbnail slot="start" (click)="playerSongPage()">
       <img src="assets/img/placeholder.PNG" />
     </ion-thumbnail>
     <ion-label (click)="playerSongPage()">
-      <h3>{{ song.title }}</h3>
-      <p>{{ song.artist }}</p>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.artist_name }}</p>
     </ion-label>
-    <ion-note>{{ song.duration }}</ion-note>
+    <!-- TODO -->
+    <ion-note>{{ item.duration }}</ion-note>
     <ion-icon slot="end" name="ellipsis-horizontal" id="present-alert" (click)="presentAlert()"></ion-icon>
   </ion-item>
 

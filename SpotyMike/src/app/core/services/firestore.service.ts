@@ -159,4 +159,30 @@ export class FirestoreService {
       followers: doc.data()['followers'],
     }));
   }
+
+  // get last played songs
+  async getLastPlayedSongs() {
+    const songsCol = collection(this.db,'songs');
+    const q = query(songsCol, orderBy('dateEcoute', 'desc'), limit(4));
+    const songsSnapshot = await getDocs(q);
+    const songsList = songsSnapshot.docs.map((doc) => doc.data() as ISong);
+
+    const songsWithArtistsPromises = songsList.map(async (song) => {
+      const album = song.albumId
+        ? await this.getDocumentData<IAlbum>('albums', song.albumId)
+        : null;
+      const artist = album?.artistId
+        ? await this.getDocumentData<IArtist>('artists', album.artistId)
+        : null;
+      return {
+        title: song.title,
+        dateEcoute: song.dateEcoute,
+        artist_name: artist ? artist.fullname : null,
+      };
+    });
+
+    return Promise.all(songsWithArtistsPromises);
+  }
+
+  // 
 }

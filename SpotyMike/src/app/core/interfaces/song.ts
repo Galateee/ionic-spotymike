@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore/lite";
 import { IAlbum } from "./album";
 
 export interface ISong {
@@ -5,4 +6,5 @@ export interface ISong {
     cover: string;
     albumId: string;
     nbEcoutes: number;
+    dateEcoute: Timestamp;
 }
