@@ -36,11 +36,13 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
   ],
 })
 export class SongListComponent implements OnInit {
+  @Input() value?: string;
   @Input() hasHeader?: boolean;
   @Input() headerTitle?: string;
   @Input() hasGetAll?: boolean;
 
   lastPlayedSongs: any[] = [];
+  songList: any[] = [];
 
   private fireStoreService = inject(FirestoreService);
   private router = inject(Router);
@@ -51,12 +53,18 @@ export class SongListComponent implements OnInit {
 
   ngOnInit() {
     addIcons({ ellipsisHorizontal });
-    this.loadLastPlayedSongs();
+    this.loadData();
   }
 
-  async loadLastPlayedSongs() {
-    this.lastPlayedSongs = await this.fireStoreService.getLastPlayedSongs();
-    console.log('Last Played :',this.lastPlayedSongs);
+  async loadData() {
+    if(this.value === "lastPlayedSongs") {
+      this.lastPlayedSongs = await this.fireStoreService.getLastPlayedSongs(4)
+      console.log('Last Played :',this.lastPlayedSongs);
+    }
+    if(this.value === "songList") {
+      this.songList = await this.fireStoreService.getLastPlayedSongs()
+      console.log('List song :',this.songList);
+    }
   }
 
   presentAlert() {

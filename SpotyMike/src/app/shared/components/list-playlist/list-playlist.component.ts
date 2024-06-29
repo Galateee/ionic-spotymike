@@ -59,7 +59,7 @@ export class ListPlaylistComponent implements OnInit {
   }
 
   async loadPlaylist() {
-    this.playlist = await this.fireStoreService.getPlaylistsWithDetails();
+    this.playlist = await this.fireStoreService.getPlaylistsWithDetails(4);
     console.log('Playlist :',this.playlist);
   }
 

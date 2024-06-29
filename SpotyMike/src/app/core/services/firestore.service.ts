@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
@@ -7,18 +6,16 @@ import {
   getDocs,
   query,
   where,
-  limit,
+  limit as limit,
   doc,
   getDoc,
   orderBy,
 } from 'firebase/firestore/lite';
-
 import { IUser } from '../interfaces/user';
 import { IArtist } from '../interfaces/artist';
 import { IAlbum } from '../interfaces/album';
 import { ISong } from '../interfaces/song';
 import { IPlaylist } from '../interfaces/playlist';
-
 import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
@@ -171,9 +168,11 @@ export class FirestoreService {
   }
 
   // get last played songs
-  async getLastPlayedSongs() {
+  async getLastPlayedSongs(limitCount?: number) {
     const songsCol = collection(this.db, 'songs');
-    const q = query(songsCol, orderBy('dateEcoute', 'desc'), limit(4));
+    const q = limitCount
+      ? query(songsCol, orderBy('dateEcoute', 'desc'), limit(limitCount))
+      : query(songsCol, orderBy('dateEcoute', 'desc'));
     const songsSnapshot = await getDocs(q);
     const songsList = songsSnapshot.docs.map((doc) => doc.data() as ISong);
 
@@ -195,9 +194,11 @@ export class FirestoreService {
   }
 
   // get playlists with songs count and creator's name
-  async getPlaylistsWithDetails() {
+  async getPlaylistsWithDetails(limitCount?: number) {
     const playlistsCol = collection(this.db, 'playlists');
-    const q = query(playlistsCol, limit(4)); // Adding the limit of 4 here
+    const q = limitCount
+      ? query(playlistsCol, limit(limitCount))
+      : query(playlistsCol);
     const playlistSnapshot = await getDocs(q);
     const playlists = playlistSnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -221,6 +222,4 @@ export class FirestoreService {
 
     return Promise.all(playlistsWithDetailsPromises);
   }
-
-  //
 }
