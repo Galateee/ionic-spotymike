@@ -203,10 +203,11 @@ export class FirestoreService {
     const playlists = playlistSnapshot.docs.map((doc) => ({
       id: doc.id,
       title: doc.data()['title'],
-      creatorName: doc.data()['creatorName'],
+      userId: doc.data()['userId'],
     }));
 
     const playlistsWithDetailsPromises = playlists.map(async (playlist) => {
+      const creator = await this.getDocumentData<IUser>('users', playlist.userId);
       const songCountQuery = query(
         collection(this.db, 'songs'),
         where('playlistId', '==', playlist.id)
@@ -215,7 +216,7 @@ export class FirestoreService {
       const songCount = songsSnapshot.size;
       return {
         title: playlist.title,
-        creatorName: playlist.creatorName,
+        creatorName: creator ? `${creator.firstname} ${creator.lastname}` : 'Unknown',
         songCount,
       };
     });

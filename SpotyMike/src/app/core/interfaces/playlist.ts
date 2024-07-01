@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore/lite";
 
 export interface IPlaylist {
     title: string;  
-    creatorName: string;
+    userId: string;
     cover: string;  
     public: boolean;
     created_at: Timestamp
