@@ -19,7 +19,7 @@
       </ion-card-content>
     </ion-card>
 
-    <app-segment headerTitle="Music Genres" [hasHeader]="true" [hasGetAll]="true" (numberChange)="onSegmentChanged($event)"></app-segment>
+    <app-segment headerTitle="Music Genres" [hasHeader]="true" [hasGetAll]="false" (numberChange)="onSegmentChanged($event)"></app-segment>
 
     @if ( selectedSegment === 'all') {
             <!-- Music Genres component -->

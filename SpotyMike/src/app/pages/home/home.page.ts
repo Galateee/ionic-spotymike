@@ -3,7 +3,33 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent, IonApp, IonTabButton, IonCardContent, IonIcon, IonFooter, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle, IonSegment, IonSegmentButton, IonList, IonItem, IonLabel, IonNote, IonThumbnail, IonRow, IonButtons, IonBackButton, IonButton, IonGrid, IonListHeader, IonCol, IonAvatar, IonImg } from '@ionic/angular/standalone';
+  IonContent,
+  IonApp,
+  IonTabButton,
+  IonCardContent,
+  IonIcon,
+  IonFooter,
+  IonCard,
+  IonCardTitle,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonSegment,
+  IonSegmentButton,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonNote,
+  IonThumbnail,
+  IonRow,
+  IonButtons,
+  IonBackButton,
+  IonButton,
+  IonGrid,
+  IonListHeader,
+  IonCol,
+  IonAvatar,
+  IonImg,
+} from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { addIcons } from 'ionicons';
 import { arrowForwardOutline } from 'ionicons/icons';
@@ -22,7 +48,31 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonImg, IonAvatar, IonCol, IonListHeader, IonGrid, IonButton, IonBackButton, IonButtons, IonRow, IonNote, IonLabel, IonItem, IonList, IonSegmentButton, IonSegment, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCard, IonFooter, IonIcon, IonCardContent, IonTabButton, IonApp,
+  imports: [
+    IonImg,
+    IonAvatar,
+    IonCol,
+    IonListHeader,
+    IonGrid,
+    IonButton,
+    IonBackButton,
+    IonButtons,
+    IonRow,
+    IonNote,
+    IonLabel,
+    IonItem,
+    IonList,
+    IonSegmentButton,
+    IonSegment,
+    IonCardSubtitle,
+    IonCardHeader,
+    IonCardTitle,
+    IonCard,
+    IonFooter,
+    IonIcon,
+    IonCardContent,
+    IonTabButton,
+    IonApp,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -35,31 +85,27 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
     CardDisplayComponent,
     SegmentComponent,
     ListPlaylistComponent,
-
   ],
 })
 export class HomePage {
-
   lastAlbum: any[] = [];
 
   // getTest: any[] = [];
 
   private fireStoreService = inject(FirestoreService);
   private router = inject(Router);
-  
-  constructor() {
 
-  }
-  
+  constructor() {}
+
   ngOnInit() {
     addIcons({ arrowForwardOutline });
     this.loadLastAlbum();
     // this.loadTestFirestore();
   }
-  
+
   async loadLastAlbum() {
     this.lastAlbum = await this.fireStoreService.getLastAlbum();
-    console.log('Last album :',this.lastAlbum);
+    console.log('Last album :', this.lastAlbum);
   }
 
   // async loadTestFirestore() {
@@ -102,11 +148,9 @@ export class HomePage {
   albumPage() {
     this.router.navigateByUrl('/album');
   }
-  
+
   selectedSegment: string = 'all';
   onSegmentChanged(val: string) {
     this.selectedSegment = val;
   }
 }
-
-

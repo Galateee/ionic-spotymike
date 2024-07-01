@@ -1,11 +1,40 @@
 <ion-app class="ion-padding">
-
   <!-- endIcon : search, dotes -->
   <!-- startIcon : profile, back -->
-  <app-header startIcon="back" headerTitle="Album" endIcon="dotes"></app-header>
+  <app-header startIcon="back" headerTitle="" endIcon="dotes"></app-header>
 
   <ion-content [fullscreen]="true">
-    <app-explore-container name="Album"></app-explore-container>
-  </ion-content>
+    <ion-card>
+      <ion-card-content>
+        
+        <img class="image-placeholder" src="assets/img/placeholder.PNG" />
 
+        <div>
+          <p><img class="artist-avatar" src="assets/img/placeholder.PNG" />Artist name</p>
+        </div>
+
+        <h1>Alien Club</h1>
+
+        <div class="controls">
+          <ion-button shape="circle" fill="clear" class="icon-sides">
+            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+          </ion-button>
+
+          <ion-icon
+            [name]="isPlaying ? 'pause-circle' : 'play-circle'"
+            class="play-icon"
+          ></ion-icon>
+
+          <ion-button shape="circle" fill="clear" class="icon-sides">
+            <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+    
+    <app-song-list value="songList" headerTitle="" [hasHeader]="false" [hasGetAll]="false"></app-song-list>
+
+    <!-- <app-song-list value="album" headerTitle="" [hasHeader]="false" [hasGetAll]="false"></app-song-list> -->
+  </ion-content>
 </ion-app>
