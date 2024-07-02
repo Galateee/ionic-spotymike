@@ -44,15 +44,15 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/list-artist/list-artist.page').then( m => m.ListArtistPage)
   },
   {
-    path: 'profile-artist',
-    loadComponent: () => import('./pages/profile-artist/profile-artist.page').then( m => m.ProfileArtistPage)
-  },
-  {
     path: 'player-song',
     loadComponent: () => import('./pages/player-song/player-song.page').then( m => m.PlayerSongPage)
   },
   {
-    path: 'album',
+    path: 'profile-artist/:id',
+    loadComponent: () => import('./pages/profile-artist/profile-artist.page').then( m => m.ProfileArtistPage)
+  },
+  {
+    path: 'album/:id',
     loadComponent: () => import('./pages/album/album.page').then( m => m.AlbumPage)
   },
 ];

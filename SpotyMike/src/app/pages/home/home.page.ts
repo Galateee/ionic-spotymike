@@ -145,8 +145,8 @@ export class HomePage {
   searchPage() {
     this.router.navigateByUrl('/search');
   }
-  albumPage() {
-    this.router.navigateByUrl('/album');
+  goToAlbumPage(albumId: string): void {
+    this.router.navigate(['/album', albumId]);
   }
 
   selectedSegment: string = 'all';

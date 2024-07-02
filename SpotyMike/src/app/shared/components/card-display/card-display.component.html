@@ -2,7 +2,7 @@
   <ion-list-header *ngIf="hasHeader">
     <ion-label>{{ headerTitle }}</ion-label>
     <ion-button *ngIf="value === 'topSongs' && hasGetAll" class="seeAllButton" href="/list-song" >See All</ion-button>
-    <ion-button *ngIf="value === 'topAlbums' && hasGetAll" class="seeAllButton" href="/list-album" >See All</ion-button>
+    <ion-button *ngIf="value === 'topAlbums' && hasGetAll" class="seeAllButton" href="" >See All</ion-button>
     <ion-button *ngIf="value === 'topArtists' && hasGetAll" class="seeAllButton" href="/list-artist" >See All</ion-button>
   </ion-list-header>
 
@@ -10,7 +10,7 @@
     <ion-row>
       @if (value === 'topSongs') {
       <ion-col *ngFor="let item of topSongs">
-        <ion-card (click)="valuePage()">
+        <ion-card (click)="goToPlayer()">
           <img src="assets/img/placeholder.PNG" alt="item" />
           <ion-card-content>
             <h3 *ngIf="item.title">{{ item.title }}</h3>
@@ -21,7 +21,7 @@
       } 
       @if (value === 'topAlbums') {
       <ion-col *ngFor="let item of topAlbums">
-        <ion-card (click)="valuePage()">
+        <ion-card (click)="goToAlbumPage(item.id)">
           <img src="assets/img/placeholder.PNG" alt="item" />
           <ion-card-content>
             <h3 *ngIf="item.album_name">{{ item.album_name }}</h3>
@@ -32,7 +32,7 @@
       }
       @if (value === 'topArtists') {
         <ion-col *ngFor="let item of topArtists">
-          <ion-card (click)="valuePage()">
+          <ion-card (click)="goToArtistPage(item.id)">
             <img src="assets/img/placeholder.PNG" alt="item" />
             <ion-card-content>
               <h3 *ngIf="item.fullname">{{ item.fullname }}</h3>

@@ -23,6 +23,7 @@ export class CardDisplayComponent  implements OnInit {
   topAlbums: any[] = []; 
   topArtists: any[] = []; 
   
+  private router = inject(Router);
   private fireStoreService = inject(FirestoreService);
 
   constructor() { }
@@ -47,14 +48,13 @@ export class CardDisplayComponent  implements OnInit {
     }
   }
 
-  private router = inject(Router);
-  valuePage() {
-    if (this.value === 'topSongs') {
-      this.router.navigate(['/player-song']); // Redirect to /list-song for songs
-    } else if (this.value === 'topAlbums') {
-      this.router.navigate(['/album']); // Redirect to /list-album for albums
-    } else if (this.value === 'topArtists') {
-      this.router.navigate(['/profile-artist']); // Redirect to /list-artist for artists
-    }
+  goToPlayer() {
+    this.router.navigateByUrl('/player-song');
+  }
+  goToAlbumPage(albumId: string): void {
+    this.router.navigate(['/album', albumId]);
+  }
+  goToArtistPage(artistId: string): void {
+    this.router.navigate(['/profile-artist', artistId]);
   }
 }

@@ -40,11 +40,13 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
   ],
 })
 export class ListPlaylistComponent implements OnInit {
+  @Input() value?: string;
   @Input() hasHeader?: boolean;
   @Input() headerTitle?: string;
   @Input() hasGetAll?: boolean;
 
-  playlist: any[] = [];
+  homePlaylist: any[] = [];
+  allPlaylist: any[] = [];
 
   private fireStoreService = inject(FirestoreService);
   private router = inject(Router);
@@ -59,8 +61,15 @@ export class ListPlaylistComponent implements OnInit {
   }
 
   async loadPlaylist() {
-    this.playlist = await this.fireStoreService.getPlaylistsWithDetails(4);
-    console.log('Playlist :',this.playlist);
+
+    if(this.value === "homePlaylist") {
+      this.homePlaylist = await this.fireStoreService.getPlaylistsWithDetails(4)
+      console.log('Last Played :',this.homePlaylist);
+    }
+    if(this.value === "allPlaylist") {
+      this.allPlaylist = await this.fireStoreService.getPlaylistsWithDetails()
+      console.log('List song :',this.allPlaylist);
+    }
   }
 
   presentAlert() {

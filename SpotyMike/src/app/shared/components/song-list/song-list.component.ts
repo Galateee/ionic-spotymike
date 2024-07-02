@@ -40,6 +40,7 @@ export class SongListComponent implements OnInit {
   @Input() hasHeader?: boolean;
   @Input() headerTitle?: string;
   @Input() hasGetAll?: boolean;
+  @Input() songs?: any[] = [];
 
   lastPlayedSongs: any[] = [];
   songList: any[] = [];
@@ -54,16 +55,19 @@ export class SongListComponent implements OnInit {
   ngOnInit() {
     addIcons({ ellipsisHorizontal });
     this.loadData();
+
+    console.log(this.songs);
+    
   }
 
   async loadData() {
-    if(this.value === "lastPlayedSongs") {
-      this.lastPlayedSongs = await this.fireStoreService.getLastPlayedSongs(4)
-      console.log('Last Played :',this.lastPlayedSongs);
+    if (this.value === "lastPlayedSongs") {
+      this.lastPlayedSongs = await this.fireStoreService.getLastPlayedSongs(4);
+      console.log('Last Played :', this.lastPlayedSongs);
     }
-    if(this.value === "songList") {
-      this.songList = await this.fireStoreService.getLastPlayedSongs()
-      console.log('List song :',this.songList);
+    if (this.value === "songList") {
+      this.songList = await this.fireStoreService.getLastPlayedSongs();
+      console.log('List song :', this.songList);
     }
   }
 

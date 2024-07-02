@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -28,6 +28,10 @@ import {
   pauseCircle,
 } from 'ionicons/icons';
 import { SongListComponent } from 'src/app/shared/components/song-list/song-list.component';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
+import { Router } from '@angular/router';
+import { IAlbum } from 'src/app/core/interfaces/album'; 
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-album',
@@ -57,13 +61,21 @@ import { SongListComponent } from 'src/app/shared/components/song-list/song-list
   ],
 })
 export class AlbumPage implements OnInit {
-
   isPlaying: boolean = false;
+  albumDetail: any = null;
 
-  constructor() {}
+  private fireStoreService = inject(FirestoreService);
+  private router = inject(Router);
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {}
+
+  async ngOnInit() {
     addIcons({ heartOutline, playOutline, shareSocialOutline, playCircle, pauseCircle });
-  }
 
+    const albumId = this.route.snapshot.paramMap.get('id');
+    if (albumId) {
+      this.albumDetail = await this.fireStoreService.getAlbumDetails(albumId);
+      console.log("Album details :",this.albumDetail);
+    }
+  }
 }

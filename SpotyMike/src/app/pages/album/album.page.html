@@ -10,10 +10,10 @@
         <img class="image-placeholder" src="assets/img/placeholder.PNG" />
 
         <div>
-          <p><img class="artist-avatar" src="assets/img/placeholder.PNG" />Artist name</p>
+          <p><img class="artist-avatar" src="assets/img/placeholder.PNG" />{{ albumDetail?.artistName }}</p>
         </div>
 
-        <h1>Alien Club</h1>
+        <h1>{{ albumDetail?.albumName }}</h1>
 
         <div class="controls">
           <ion-button shape="circle" fill="clear" class="icon-sides">
@@ -33,8 +33,7 @@
       </ion-card-content>
     </ion-card>
     
-    <app-song-list value="songList" headerTitle="" [hasHeader]="false" [hasGetAll]="false"></app-song-list>
+    <app-song-list value="albumDetail" headerTitle="" [hasHeader]="false" [hasGetAll]="false" [songs]="albumDetail?.songs"></app-song-list>
 
-    <!-- <app-song-list value="album" headerTitle="" [hasHeader]="false" [hasGetAll]="false"></app-song-list> -->
   </ion-content>
 </ion-app>

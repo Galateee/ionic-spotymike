@@ -27,13 +27,13 @@ export class FirestoreService {
 
   constructor() {}
 
-  private async getCollectionData<T>(collectionName: string) {
+  async getCollectionData<T>(collectionName: string) {
     const colRef = collection(this.db, collectionName);
     const snapshot = await getDocs(colRef);
     return snapshot.docs.map((doc) => doc.data() as T);
   }
 
-  private async getDocumentData<T>(collectionName: string, docId: string) {
+  async getDocumentData<T>(collectionName: string, docId: string) {
     const docRef = doc(this.db, collectionName, docId);
     const docSnap = await getDoc(docRef);
     return docSnap.exists() ? (docSnap.data() as T) : null;
@@ -46,7 +46,7 @@ export class FirestoreService {
   async getAllArtists() {
     return this.getCollectionData<IArtist>('artists');
   }
-  async getAlbums() {
+  async getAllAlbums() {
     return this.getCollectionData<IAlbum>('albums');
   }
   async getAllSongs() {
@@ -58,7 +58,7 @@ export class FirestoreService {
 
   // get albums and corresponding artists
   async getAlbumsWithArtists() {
-    const albums = await this.getAlbums();
+    const albums = await this.getAllAlbums();
     const albumsWithArtistsPromises = albums.map(async (album) => {
       const artist = album.artistId
         ? await this.getDocumentData<IArtist>('artists', album.artistId)
@@ -89,6 +89,7 @@ export class FirestoreService {
       const songsSnapshot = await getDocs(songCountQuery);
       const songCount = songsSnapshot.size;
       return {
+        id: album.id,
         nom: album.nom,
         songCount,
       };
@@ -145,6 +146,7 @@ export class FirestoreService {
           : null;
         return album
           ? {
+              id: albumId,
               album_name: album.nom,
               artist_name: artist ? artist.fullname : null,
               totalListens,
@@ -162,6 +164,7 @@ export class FirestoreService {
     const q = query(artistsCol, orderBy('followers', 'desc'), limit(3));
     const artistsSnapshot = await getDocs(q);
     return artistsSnapshot.docs.map((doc) => ({
+      id: doc.id,
       fullname: doc.data()['fullname'],
       followers: doc.data()['followers'],
     }));
@@ -222,5 +225,28 @@ export class FirestoreService {
     });
 
     return Promise.all(playlistsWithDetailsPromises);
+  }
+
+  async getAlbumDetails(albumId: string) {
+    // Récupérer les détails de l'album
+    const album = await this.getDocumentData<IAlbum>('albums', albumId);
+    if (!album) {
+      return null; // Si l'album n'existe pas
+    }
+
+    // Récupérer les détails de l'artiste
+    const artist = album.artistId ? await this.getDocumentData<IArtist>('artists', album.artistId) : null;
+
+    // Récupérer les musiques de l'album
+    const songsCol = collection(this.db, 'songs');
+    const songQuery = query(songsCol, where('albumId', '==', albumId));
+    const songSnapshot = await getDocs(songQuery);
+    const songs = songSnapshot.docs.map((doc) => doc.data() as ISong);
+
+    return {
+      albumName: album.nom,
+      artistName: artist ? artist.fullname : 'Unknown Artist',
+      songs,
+    };
   }
 }

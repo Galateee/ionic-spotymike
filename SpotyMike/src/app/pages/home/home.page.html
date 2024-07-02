@@ -5,9 +5,9 @@
   <!-- endIcon : search, dotes -->
   <app-header startIcon="profile" headerTitle="" endIcon="search"></app-header>
 
-    <!-- New Albums -->
   <ion-content [fullscreen]="true">
-    <ion-card class="new-album" (click)="albumPage()">
+    <!-- New Albums -->
+    <ion-card class="new-album" (click)="goToAlbumPage(lastAlbum[0]?.id)">
       <ion-card-header>
         <ion-card-title>{{ lastAlbum[0]?.nom }}</ion-card-title>
         <ion-card-subtitle>New Album</ion-card-subtitle>
@@ -19,10 +19,10 @@
       </ion-card-content>
     </ion-card>
 
+    <!-- Music Genres component -->
     <app-segment headerTitle="Music Genres" [hasHeader]="true" [hasGetAll]="false" (numberChange)="onSegmentChanged($event)"></app-segment>
 
-    @if ( selectedSegment === 'all') {
-            <!-- Music Genres component -->
+    @if ( selectedSegment === 'all') {      
       <!-- Top Songs component -->
       <app-card-display value="topSongs" headerTitle="Top Songs" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
       <!-- Last played component -->
@@ -32,7 +32,7 @@
       <!-- Top Artists component -->
       <app-card-display value="topArtists" headerTitle="Top Artists" [hasHeader]="true" [hasGetAll]="true"></app-card-display>
       <!-- Playlist component -->
-      <app-list-playlist headerTitle="Playlist" [hasHeader]="true" [hasGetAll]="true"></app-list-playlist>
+      <app-list-playlist value="homePlaylist" headerTitle="Playlist" [hasHeader]="true" [hasGetAll]="true"></app-list-playlist>
     }
     @else if (selectedSegment === 'rnb') {
       <!-- Top Songs component -->
