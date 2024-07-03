@@ -33,7 +33,7 @@
       </ion-card-content>
     </ion-card>
     
-    <app-song-list value="albumDetail" headerTitle="" [hasHeader]="false" [hasGetAll]="false" [songs]="albumDetail?.songs"></app-song-list>
+    <app-song-list *ngIf="albumDetail" value="albumDetail" headerTitle="" [hasHeader]="false" [hasGetAll]="false" [data]="albumDetail"></app-song-list>
 
   </ion-content>
 </ion-app>

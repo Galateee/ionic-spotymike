@@ -6,19 +6,20 @@
   </ion-list-header>
 
   @if (value === 'lastPlayedSongs') {
-  <ion-item *ngFor="let item of lastPlayedSongs">
-    <ion-thumbnail slot="start" (click)="playerSongPage()">
-      <img src="assets/img/placeholder.PNG" />
-    </ion-thumbnail>
-    <ion-label (click)="playerSongPage()">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.artist_name }}</p>
-    </ion-label>
-    <!-- TODO -->
-    <ion-note>{{ item.duration }}</ion-note>
-    <ion-icon slot="end" name="ellipsis-horizontal" id="present-alert" (click)="presentAlert()"></ion-icon>
-  </ion-item>
+    <ion-item *ngFor="let item of lastPlayedSongs">
+      <ion-thumbnail slot="start" (click)="playerSongPage()">
+        <img src="assets/img/placeholder.PNG" />
+      </ion-thumbnail>
+      <ion-label (click)="playerSongPage()">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.artist_name }}</p>
+      </ion-label>
+      <!-- TODO -->
+      <ion-note>{{ item.duration }}</ion-note>
+      <ion-icon slot="end" name="ellipsis-horizontal" id="present-alert" (click)="presentAlert()"></ion-icon>
+    </ion-item>
   }
+
   @if (value === 'songList') {
     <ion-item *ngFor="let item of songList">
       <ion-thumbnail slot="start" (click)="playerSongPage()">
@@ -32,6 +33,21 @@
       <ion-note>{{ item.duration }}</ion-note>
       <ion-icon slot="end" name="ellipsis-horizontal" id="present-alert" (click)="presentAlert()"></ion-icon>
     </ion-item>
-    }
+  }
+    
+  @if (value === 'albumDetail') {
+    <ion-item *ngFor="let item of data?.songs">
+      <ion-thumbnail slot="start" (click)="playerSongPage()">
+        <img src="assets/img/placeholder.PNG" />
+      </ion-thumbnail>
+      <ion-label (click)="playerSongPage()">
+        <h3>{{ item.title }}</h3>
+        <p>{{ data.artistName }}</p>
+      </ion-label>
+      <!-- TODO -->
+      <ion-note>{{ item.duration }}</ion-note>
+      <ion-icon slot="end" name="ellipsis-horizontal" id="present-alert" (click)="presentAlert()"></ion-icon>
+    </ion-item>
+  }
 
 </ion-list>

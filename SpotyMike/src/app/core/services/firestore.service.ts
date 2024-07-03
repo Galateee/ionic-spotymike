@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import {
-  getFirestore,
   collection,
-  getDocs,
-  query,
-  where,
-  limit as limit,
   doc,
   getDoc,
+  getDocs,
+  getFirestore,
+  limit,
   orderBy,
+  query,
+  where,
 } from 'firebase/firestore/lite';
-import { IUser } from '../interfaces/user';
-import { IArtist } from '../interfaces/artist';
-import { IAlbum } from '../interfaces/album';
-import { ISong } from '../interfaces/song';
-import { IPlaylist } from '../interfaces/playlist';
 import { environment } from '../../../environments/environment.prod';
+import { IAlbum } from '../interfaces/album';
+import { IArtist } from '../interfaces/artist';
+import { IPlaylist } from '../interfaces/playlist';
+import { ISong } from '../interfaces/song';
+import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',

@@ -1,19 +1,19 @@
-import { Component, OnInit, Input, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import {
-  IonItem,
-  IonList,
-  IonThumbnail,
-  IonLabel,
-  IonNote,
-  IonListHeader,
+  IonAlert,
   IonButton,
   IonIcon,
-  IonAlert,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonThumbnail,
 } from '@ionic/angular/standalone';
-import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { ellipsisHorizontal } from 'ionicons/icons';
-import { Router } from '@angular/router';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
 
@@ -40,7 +40,7 @@ export class SongListComponent implements OnInit {
   @Input() hasHeader?: boolean;
   @Input() headerTitle?: string;
   @Input() hasGetAll?: boolean;
-  @Input() songs?: any[] = [];
+  @Input() data?: any;
 
   lastPlayedSongs: any[] = [];
   songList: any[] = [];
@@ -55,9 +55,6 @@ export class SongListComponent implements OnInit {
   ngOnInit() {
     addIcons({ ellipsisHorizontal });
     this.loadData();
-
-    console.log(this.songs);
-    
   }
 
   async loadData() {

@@ -1,17 +1,17 @@
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, inject } from '@angular/core';
 import {
-  IonItem,
-  IonList,
-  IonThumbnail,
-  IonLabel,
-  IonNote,
-  IonListHeader,
+  IonAlert,
   IonButton,
   IonIcon,
-  IonAlert,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonThumbnail,
 } from '@ionic/angular/standalone';
-import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import {
   ellipsisVertical,
@@ -64,11 +64,11 @@ export class ListPlaylistComponent implements OnInit {
 
     if(this.value === "homePlaylist") {
       this.homePlaylist = await this.fireStoreService.getPlaylistsWithDetails(4)
-      console.log('Last Played :',this.homePlaylist);
+      console.log('Playlist Home:',this.homePlaylist);
     }
     if(this.value === "allPlaylist") {
       this.allPlaylist = await this.fireStoreService.getPlaylistsWithDetails()
-      console.log('List song :',this.allPlaylist);
+      console.log('Playlist All :',this.allPlaylist);
     }
   }
 
