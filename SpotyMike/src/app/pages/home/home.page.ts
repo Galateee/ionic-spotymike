@@ -94,10 +94,13 @@ export class HomePage {
   private fireStoreService = inject(FirestoreService);
   private router = inject(Router);
 
-  constructor() {}
+  constructor() {
+    addIcons({
+      arrowForwardOutline,
+    });
+  }
 
   ngOnInit() {
-    addIcons({ arrowForwardOutline });
     this.loadLastAlbum();
     // this.loadTestFirestore();
   }

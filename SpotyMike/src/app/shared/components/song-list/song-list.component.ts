@@ -50,19 +50,20 @@ export class SongListComponent implements OnInit {
 
   private alert = inject(AlertService);
 
-  constructor() {}
+  constructor() {
+    addIcons({ ellipsisHorizontal });
+  }
 
   ngOnInit() {
-    addIcons({ ellipsisHorizontal });
     this.loadData();
   }
 
   async loadData() {
-    if (this.value === "lastPlayedSongs") {
+    if (this.value === 'lastPlayedSongs') {
       this.lastPlayedSongs = await this.fireStoreService.getLastPlayedSongs(4);
       console.log('Last Played :', this.lastPlayedSongs);
     }
-    if (this.value === "songList") {
+    if (this.value === 'songList') {
       this.songList = await this.fireStoreService.getLastPlayedSongs();
       console.log('List song :', this.songList);
     }
@@ -78,5 +79,4 @@ export class SongListComponent implements OnInit {
   searchPage() {
     this.router.navigateByUrl('/search');
   }
-
 }

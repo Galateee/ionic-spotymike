@@ -53,22 +53,28 @@ export class ListPlaylistComponent implements OnInit {
 
   private alert = inject(AlertService);
 
-  constructor() {}
+  constructor() {
+    addIcons({
+      ellipsisVertical,
+      heartOutline,
+      shareSocialOutline,
+    });
+  }
 
   ngOnInit(): void {
-    addIcons({ ellipsisVertical, heartOutline, shareSocialOutline });
     this.loadPlaylist();
   }
 
   async loadPlaylist() {
-
-    if(this.value === "homePlaylist") {
-      this.homePlaylist = await this.fireStoreService.getPlaylistsWithDetails(4)
-      console.log('Playlist Home:',this.homePlaylist);
+    if (this.value === 'homePlaylist') {
+      this.homePlaylist = await this.fireStoreService.getPlaylistsWithDetails(
+        4
+      );
+      console.log('Playlist Home:', this.homePlaylist);
     }
-    if(this.value === "allPlaylist") {
-      this.allPlaylist = await this.fireStoreService.getPlaylistsWithDetails()
-      console.log('Playlist All :',this.allPlaylist);
+    if (this.value === 'allPlaylist') {
+      this.allPlaylist = await this.fireStoreService.getPlaylistsWithDetails();
+      console.log('Playlist All :', this.allPlaylist);
     }
   }
 
@@ -79,5 +85,4 @@ export class ListPlaylistComponent implements OnInit {
   playerSongPage() {
     this.router.navigateByUrl('/list-song');
   }
-
 }

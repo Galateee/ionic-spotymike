@@ -22,11 +22,15 @@ export class HeaderComponent  implements OnInit {
 
   private alert = inject(AlertService);
 
-  constructor() { }
-
-  ngOnInit() {
-    addIcons({ searchOutline, ellipsisHorizontal, chevronBackOutline });
+  constructor() {
+    addIcons({
+      searchOutline,
+      ellipsisHorizontal,
+      chevronBackOutline,
+    });
   }
+
+  ngOnInit() {}
 
   private router = inject(Router);
 

@@ -65,11 +65,17 @@ export class AlbumPage implements OnInit {
   private fireStoreService = inject(FirestoreService);
   private router = inject(Router);
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    addIcons({
+      heartOutline,
+      playOutline,
+      shareSocialOutline,
+      playCircle,
+      pauseCircle,
+    });
+  }
 
   async ngOnInit() {
-    addIcons({ heartOutline, playOutline, shareSocialOutline, playCircle, pauseCircle });
-
     const albumId = this.route.snapshot.paramMap.get('id');
     if (albumId) {
       this.albumDetail = await this.fireStoreService.getAlbumDetails(albumId);
