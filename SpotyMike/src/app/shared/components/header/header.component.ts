@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
-import { Component, OnInit, Input, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonLabel, IonBackButton } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonBackButton, IonButton, IonButtons, IonHeader, IonIcon, IonLabel, IonTitle, IonToolbar } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
-import { searchOutline, ellipsisHorizontal, chevronBackOutline } from 'ionicons/icons';
+import { chevronBackOutline, ellipsisHorizontal, searchOutline } from 'ionicons/icons';
 import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({

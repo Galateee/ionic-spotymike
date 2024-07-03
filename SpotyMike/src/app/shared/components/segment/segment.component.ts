@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { IonListHeader, IonLabel, IonButton, IonSegment, IonSegmentButton, IonCard, IonCardHeader, IonCardContent, IonContent,  } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonContent, IonLabel, IonListHeader, IonSegment, IonSegmentButton, } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-segment',

@@ -1,7 +1,7 @@
-import { Router } from '@angular/router';
-import { Component, OnInit, Input, inject } from '@angular/core';
-import { IonListHeader, IonLabel, IonButton, IonRow, IonCol, IonCard, IonCardContent } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonButton, IonCard, IonCardContent, IonCol, IonLabel, IonListHeader, IonRow } from "@ionic/angular/standalone";
 import { FirestoreService } from 'src/app/core/services/firestore.service';
 
 @Component({

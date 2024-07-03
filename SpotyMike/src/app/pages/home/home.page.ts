@@ -1,47 +1,46 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
   IonApp,
-  IonTabButton,
-  IonCardContent,
-  IonIcon,
-  IonFooter,
-  IonCard,
-  IonCardTitle,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonSegment,
-  IonSegmentButton,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonNote,
-  IonThumbnail,
-  IonRow,
-  IonButtons,
+  IonAvatar,
   IonBackButton,
   IonButton,
-  IonGrid,
-  IonListHeader,
+  IonButtons,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
   IonCol,
-  IonAvatar,
+  IonContent,
+  IonFooter,
+  IonGrid,
+  IonHeader,
+  IonIcon,
   IonImg,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonRow,
+  IonSegment,
+  IonSegmentButton,
+  IonTabButton,
+  IonThumbnail,
+  IonTitle,
+  IonToolbar,
 } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { addIcons } from 'ionicons';
 import { arrowForwardOutline } from 'ionicons/icons';
-import { CommonModule } from '@angular/common';
-import { ProfilePage } from '../profile/profile.page';
-import { Router } from '@angular/router';
-import { SongListComponent } from 'src/app/shared/components/song-list/song-list.component';
-import { HeaderComponent } from 'src/app/shared/components/header/header.component';
-import { CardDisplayComponent } from 'src/app/shared/components/card-display/card-display.component';
-import { SegmentComponent } from 'src/app/shared/components/segment/segment.component';
-import { ListPlaylistComponent } from 'src/app/shared/components/list-playlist/list-playlist.component';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
+import { CardDisplayComponent } from 'src/app/shared/components/card-display/card-display.component';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { ListPlaylistComponent } from 'src/app/shared/components/list-playlist/list-playlist.component';
+import { SegmentComponent } from 'src/app/shared/components/segment/segment.component';
+import { SongListComponent } from 'src/app/shared/components/song-list/song-list.component';
+import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
 @Component({
   selector: 'app-home-home',
