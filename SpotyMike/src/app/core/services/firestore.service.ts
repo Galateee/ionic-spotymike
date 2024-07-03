@@ -78,6 +78,7 @@ export class FirestoreService {
     const albumSnapshot = await getDocs(q);
     const album = albumSnapshot.docs.map((doc) => ({
       id: doc.id,
+      cover: doc.data()['cover'],
       nom: doc.data()['nom'],
     }));
 
@@ -90,6 +91,7 @@ export class FirestoreService {
       const songCount = songsSnapshot.size;
       return {
         id: album.id,
+        cover: album.cover,
         nom: album.nom,
         songCount,
       };
@@ -227,17 +229,15 @@ export class FirestoreService {
     return Promise.all(playlistsWithDetailsPromises);
   }
 
+  // get album details
   async getAlbumDetails(albumId: string) {
-    // Récupérer les détails de l'album
     const album = await this.getDocumentData<IAlbum>('albums', albumId);
     if (!album) {
-      return null; // Si l'album n'existe pas
+      return null;
     }
 
-    // Récupérer les détails de l'artiste
     const artist = album.artistId ? await this.getDocumentData<IArtist>('artists', album.artistId) : null;
 
-    // Récupérer les musiques de l'album
     const songsCol = collection(this.db, 'songs');
     const songQuery = query(songsCol, where('albumId', '==', albumId));
     const songSnapshot = await getDocs(songQuery);
