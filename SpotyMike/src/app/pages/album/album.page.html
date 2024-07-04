@@ -7,10 +7,10 @@
     <ion-card>
       <ion-card-content>
         
-        <img class="image-placeholder" src="assets/img/placeholder.PNG" />
+        <img class="image-placeholder" [src]="albumDetail?.albumCover" />
 
         <div>
-          <p><img class="artist-avatar" src="assets/img/placeholder.PNG" />{{ albumDetail?.artistName }}</p>
+          <p><img class="artist-avatar" [src]="albumDetail?.avatar || 'assets/img/placeholder.PNG'" />{{ albumDetail?.artistName }}</p>
         </div>
 
         <h1>{{ albumDetail?.albumName }}</h1>

@@ -15,6 +15,7 @@ import { IonicModule } from '@ionic/angular';
 import { LocalStorageService } from './app/core/services/local-storage.service';
 import { FirestoreService } from './app/core/services/firestore.service';
 import { AlertService } from './app/core/services/alert.service';
+import { UploadService } from './app/core/services/upload.service';
 
 if (environment.production) {
   enableProdMode();
@@ -26,6 +27,7 @@ bootstrapApplication(AppComponent, {
     i18nProviders,
     FirestoreService,
     LocalStorageService,
+    UploadService,
     provideHttpClient(),
     provideIonicAngular(),
     provideRouter(routes),

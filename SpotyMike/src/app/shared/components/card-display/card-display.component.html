@@ -11,7 +11,7 @@
       @if (value === 'topSongs') {
       <ion-col *ngFor="let item of topSongs">
         <ion-card (click)="goToPlayer()">
-          <img src="assets/img/placeholder.PNG" alt="item" />
+          <img [src]="item.cover || 'assets/img/placeholder.PNG'" alt="item" />
           <ion-card-content>
             <h3 *ngIf="item.title">{{ item.title }}</h3>
             <p *ngIf="item.artist_name">{{ item.artist_name }}</p>
@@ -22,7 +22,7 @@
       @if (value === 'topAlbums') {
       <ion-col *ngFor="let item of topAlbums">
         <ion-card (click)="goToAlbumPage(item.id)">
-          <img src="assets/img/placeholder.PNG" alt="item" />
+          <img [src]="item.cover || 'assets/img/placeholder.PNG'" alt="item" alt="item" />
           <ion-card-content>
             <h3 *ngIf="item.album_name">{{ item.album_name }}</h3>
             <p *ngIf="item.artist_name">{{ item.artist_name }}</p>
@@ -33,7 +33,7 @@
       @if (value === 'topArtists') {
         <ion-col *ngFor="let item of topArtists">
           <ion-card (click)="goToArtistPage(item.id)">
-            <img src="assets/img/placeholder.PNG" alt="item" />
+            <img [src]="item.avatar || 'assets/img/placeholder.PNG'" alt="item" alt="item" />
             <ion-card-content>
               <h3 *ngIf="item.fullname">{{ item.fullname }}</h3>
             </ion-card-content>

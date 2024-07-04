@@ -11,6 +11,7 @@ export interface IUser {
   tel: string;
   active: boolean;
   sexe: number;
+  avatar: string;
   created_at: Timestamp;
   updated_at: Timestamp;
 

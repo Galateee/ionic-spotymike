@@ -116,6 +116,7 @@ export class FirestoreService {
         : null;
       return {
         title: song.title,
+        cover: album?.cover,
         nbEcoutes: song.nbEcoutes,
         artist_name: artist ? artist.fullname : null,
       };
@@ -149,6 +150,7 @@ export class FirestoreService {
         return album
           ? {
               id: albumId,
+              cover: album.cover,
               album_name: album.nom,
               artist_name: artist ? artist.fullname : null,
               totalListens,
@@ -165,11 +167,23 @@ export class FirestoreService {
     const artistsCol = collection(this.db, 'artists');
     const q = query(artistsCol, orderBy('followers', 'desc'), limit(3));
     const artistsSnapshot = await getDocs(q);
-    return artistsSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      fullname: doc.data()['fullname'],
-      followers: doc.data()['followers'],
-    }));
+  
+    const topArtistsWithDetailsPromises = artistsSnapshot.docs.map(async (doc) => {
+      const artistData = doc.data();
+      const artistId = doc.id;
+      
+      const userId = artistData['userId'];
+      const user = userId ? await this.getDocumentData<IUser>('users', userId) : null;
+  
+      return {
+        id: artistId,
+        fullname: artistData['fullname'],
+        followers: artistData['followers'],
+        avatar: user ? user.avatar : null
+      };
+    });
+  
+    return Promise.all(topArtistsWithDetailsPromises);
   }
 
   // get last played songs
@@ -190,6 +204,7 @@ export class FirestoreService {
         : null;
       return {
         title: song.title,
+        cover: album?.cover,
         dateEcoute: song.dateEcoute,
         artist_name: artist ? artist.fullname : null,
       };
@@ -243,9 +258,14 @@ export class FirestoreService {
     const songSnapshot = await getDocs(songQuery);
     const songs = songSnapshot.docs.map((doc) => doc.data() as ISong);
 
+    const userId = artist ? artist['userId'] : null;
+    const user = userId ? await this.getDocumentData<IUser>('users', userId) : null;
+
     return {
       albumName: album.nom,
       artistName: artist ? artist.fullname : 'Unknown Artist',
+      avatar: user ? user.avatar : null,
+      albumCover: album.cover,
       songs,
     };
   }
