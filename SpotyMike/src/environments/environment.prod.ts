@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  url_api: 'http://esiea-spotymike.eu-4.evennode.com/v1',
+  url_api: 'http://localhost:8001',
   firebase: {
     apiKey: "AIzaSyA3LYgaGbd6ImQ66SDMECoIgL61JuT2KEY",
     authDomain: "ionic-spotymike.firebaseapp.com",

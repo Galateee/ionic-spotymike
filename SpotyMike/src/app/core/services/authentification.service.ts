@@ -14,11 +14,11 @@ export class AuthentificationService {
   constructor() {}
 
   login(email: string, password: string) {
-    return this.http.post(`${this.route}/auth/login`, {
+    return this.http.post(`${this.route}/login`, {
       email: email,
       password: password,
-    });
-    // .pipe(catchError(this.errorRequest))
+    })
+    .pipe(catchError(this.errorRequest))
   }
   register() {}
 

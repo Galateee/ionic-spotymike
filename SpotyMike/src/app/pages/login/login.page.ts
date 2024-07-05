@@ -78,7 +78,7 @@ export class LoginPage {
         .login(this.form.value.email, this.form.value.password)
         .subscribe((data: any) => {
           if (data?.error) {
-            // this.error = data?.message ?? '';
+            this.error = data?.message ?? '';
           } else {
             this.localStore.setItem('user', data.user);
             this.localStore.setItem('token', data.tokens);
